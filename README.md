@@ -1,7 +1,8 @@
 # baseball-04
-FE : Joy
-BE : David , Hamil
-iOS : Lena
+- FE : Joy
+- BE : David , Hamil
+- iOS : Lena
+
 ##  Ground Rule
 
 1. github slack 연동 안함
