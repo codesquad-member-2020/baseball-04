@@ -1,4 +1,10 @@
 # baseball-04
+<<<<<<< HEAD
+=======
+- FE : Joy
+- BE : David , Hamil
+- iOS : Lena
+>>>>>>> 8acea54f1018aac2c3e6636a55a497bdbc4c17b4
 
 ##  Ground Rule
 
