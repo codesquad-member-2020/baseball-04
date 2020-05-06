@@ -4,6 +4,7 @@ import styled from "styled-components"
 const GameList = () => {
 
     const GameListWrap = styled.div`
+      padding-right : 15px;
       height: 380px;
       overflow-y : scroll;
       &::-webkit-scrollbar { width: 15px;}
