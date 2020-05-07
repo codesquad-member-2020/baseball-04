@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from "styled-components"
+import { withRouter } from 'react-router-dom';
 
-const GameList = () => {
+const GameList = (props) => {
 
     const GameListWrap = styled.div`
       padding-right : 15px;
@@ -31,7 +32,7 @@ const GameList = () => {
     `;
     const Team = styled.div`
         color : whitesmoke;
-        margin : auto;
+        /* margin : auto; */
         &:hover {
             color : #5FE3A6;
         };
@@ -42,17 +43,20 @@ const GameList = () => {
     `;
     const TeamWrap = styled.div`
         display : flex;
-        justify-content : center;
+        justify-content : space-around;
         color : grey;
         font-weight : bold;
         font-size : 25px;
         margin : 15px;
     `;
 
+    const gameListClickHandler = ()=>{
+        props.history.push('/game');
+    }
     return (
       <>
-      <GameListWrap>
-        <GameTeamCard>
+    <GameListWrap>
+     <GameTeamCard onClick={gameListClickHandler}>
             <GameNumber>GAME 1</GameNumber>
             <TeamWrap>
                 <Team>Captin</Team>VS<Team>Marvel</Team>

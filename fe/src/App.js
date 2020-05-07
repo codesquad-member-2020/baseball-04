@@ -1,9 +1,16 @@
 import React from 'react';
 import axios from "axios";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 import styled from "styled-components"
 import Main from "./components/Main";
+import Game from "./components/Game";
 
 function App() {
   const StyleReset = createGlobalStyle`
@@ -20,11 +27,16 @@ function App() {
   `;
 
   return (
-    <Wrap>
-      <StyleReset />
-      <Main/>
-    </Wrap>
+  
+      <Wrap>
+        <Switch>
+        <Route exact path="/" component ={Main}/> 
+        <Route path="/game" component ={Game}/> 
+        </Switch>
+     
+      </Wrap>
+    
+    
   );
 }
-
 export default App;
