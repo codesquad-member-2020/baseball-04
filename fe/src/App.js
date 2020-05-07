@@ -27,15 +27,16 @@ function App() {
   `;
 
   return (
-  
+    <Router>
       <Wrap>
+        <StyleReset />
         <Switch>
         <Route exact path="/" component ={Main}/> 
         <Route path="/game" component ={Game}/> 
         </Switch>
      
       </Wrap>
-    
+      </Router>
     
   );
 }
