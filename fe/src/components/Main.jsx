@@ -2,14 +2,13 @@ import React from 'react';
 import styled, { keyframes } from "styled-components"
 import GameList from "./GameList"
 
-const Main = () => {
+const Main = ({history}) => {
     const MainWrap = styled.div`
         display : flex;
         justify-content : space-between;
     `;
     const ContentWrap = styled.div`
         text-align : center;
-        margin : 20px;
         box-sizing : border-box;
         padding : 10px;
     `;
@@ -56,7 +55,6 @@ const Main = () => {
        
     `;
 
-
     return (
         <>
         <MainWrap>
@@ -65,7 +63,7 @@ const Main = () => {
         <Title>BASEBALL</Title>
         <Subtitle>o n l i n e - b a s e b a l l - g a m e</Subtitle>
         <SelectMessage>참가할 게임을 선택해주세요.</SelectMessage>
-        <GameList/>
+        <GameList history={history} />
         </ContentWrap>
         <BaseballImg src = "https://media3.giphy.com/media/cKnZaQbUWKv7QkYnFe/giphy.gif?cid=ecf05e4798aafc218b996e1a365bd43462688d94999f2bb6&rid=giphy.gif"/>
         </MainWrap>
