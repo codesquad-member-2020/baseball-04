@@ -11,20 +11,26 @@ import reset from "styled-reset";
 import styled from "styled-components"
 import Main from "./components/Main";
 import Game from "./components/Game";
+import backgroundImg from "./images/stadium.jpg";
 
 function App() {
   const StyleReset = createGlobalStyle`
         ${reset};
     `;
   const Wrap = styled.div`
-    background : #241D4F;
+    background-image : url(${backgroundImg});
+    background-size : 1500px;
+    /* background : #241D4F; */
+
     width : 1500px;
     height : 800px;
     margin : auto;
     margin-top : 40px;
     box-sizing : border-box;
-    padding : 10px;
+    /* padding : 10px; */
+   
   `;
+  
 
   return (
     <Router>
@@ -34,7 +40,6 @@ function App() {
         <Route exact path="/" component ={Main}/> 
         <Route path="/game" component ={Game}/> 
         </Switch>
-     
       </Wrap>
       </Router>
     

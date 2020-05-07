@@ -5,41 +5,39 @@ import { withRouter } from 'react-router-dom';
 const GameList = (props) => {
 
     const GameListWrap = styled.div`
-      padding-right : 15px;
-      height: 380px;
+      padding : 20px 15px 20px 30px;
+      height: 370px;
       overflow-y : scroll;
+      background: rgba(255,255,255, 0.5);border-radius:15px;
       &::-webkit-scrollbar { width: 15px;}
-      ::-webkit-scrollbar-track { background-color: #00ff0000; border-radius:5px; }
+      ::-webkit-scrollbar-track { background-color: #00ff0000; border-radius:20px;}
       ::-webkit-scrollbar-thumb { background: #00ff0000 ;border-radius:5px; }
       ::-webkit-scrollbar-button { display: none; }
       :hover {
-        ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.5);border-radius:5px; }
+        ::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.5);border-radius:20px; }
     };
+
     `;
     const GameTeamCard = styled.div`
         display : flex;
         flex-direction : column;
-        width : 400px;
-        height : 100px;
-        background : rgba(204, 0, 051, 0.5);
-        /* background : rgba(255, 000, 153, 0.4); */
-        /* background : rgba(255, 000, 102, 0.4); */
+        height : 110px;
+        background : #1C1C1C;
         border-radius : 20px;
-        border : solid 1px whitesmoke;
+        border : solid 5px #a43657;
         padding : 15px;
         box-sizing : border-box;
-        margin-top : 20px;
+        margin-bottom : 20px;
     `;
     const Team = styled.div`
         color : whitesmoke;
-        /* margin : auto; */
         &:hover {
-            color : #5FE3A6;
+            color : #DF0174;
         };
     `;
     const GameNumber = styled.div`
         font-weight : bold;
-        color : #FDD9EF;
+        color : #89B5FE;
     `;
     const TeamWrap = styled.div`
         display : flex;
