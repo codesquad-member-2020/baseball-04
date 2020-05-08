@@ -8,8 +8,7 @@ const GameList = (props) => {
       padding : 20px 15px 20px 30px;
       height: 370px;
       overflow-y : scroll;
-      background: rgba(255,255,255, 0.5);
-      border-radius:15px;
+      background: rgba(255,255,255, 0.5);border-radius:15px;
       &::-webkit-scrollbar { width: 15px;}
       ::-webkit-scrollbar-track { background-color: #00ff0000; border-radius:20px;}
       ::-webkit-scrollbar-thumb { background: #00ff0000 ;border-radius:5px; }
@@ -31,10 +30,11 @@ const GameList = (props) => {
         margin-bottom : 20px;
     `;
     const Team = styled.div`
-        font-family: 'HangeulNuri-Bold';
+        font-family : 'NeoDunggeunmo';
+        font-size : 35px;
         color : whitesmoke;
         &:hover {
-            color : #DF0174;
+            color : #F5A9BC;
         };
     `;
     const GameNumber = styled.div`
@@ -42,12 +42,15 @@ const GameList = (props) => {
         font-weight : bold;
         color : #89B5FE;
     `;
+
+
     const TeamWrap = styled.div`
+        font-family : 'NeoDunggeunmo';
         display : flex;
         justify-content : space-around;
         color : grey;
         font-weight : bold;
-        font-size : 25px;
+        font-size : 30px;
         margin : 15px;
     `;
 

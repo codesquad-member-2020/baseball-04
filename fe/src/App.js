@@ -24,15 +24,10 @@ function App() {
   const Wrap = styled.div`
     background-image : url(${backgroundImg});
     background-size : 1500px;
-    /* background : #241D4F; */
-
     width : 1500px;
     height : 800px;
     margin : auto;
     margin-top : 40px;
-    box-sizing : border-box;
-    /* padding : 10px; */
-   
   `;
   
 

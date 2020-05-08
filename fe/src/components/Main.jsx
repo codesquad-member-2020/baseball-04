@@ -6,6 +6,7 @@ const Main = ({history}) => {
     const MainWrap = styled.div`
         display : flex;
         justify-content : center;
+        
     `;
     const ContentWrap = styled.div`
         display : flex;
@@ -21,9 +22,11 @@ const Main = ({history}) => {
     `;
 
     const Title = styled.div`
-        font-size : 70px;
+        font-family : 'NeoDunggeunmo';
+        font-size : 80px;
         color : #FFFFFF; 
         text-shadow: -4px 0 #A33756,0 4px #A33756,4px 0 #A33756,0 -4px #A33756;
+        text-align : center;
         margin : 20px;
         `;
     const Subtitle = styled.div`
@@ -39,7 +42,7 @@ const Main = ({history}) => {
     `;
     const BaseballImg = styled.img`
         height : 80px;
-        margin : 20px;
+        margin : 10px;
     `;
 
 
