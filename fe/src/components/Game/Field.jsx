@@ -56,7 +56,7 @@ const Field = () => {
                 <SBO>O<Count style={{color : 'red'}}>●●</Count></SBO>
             </SBOWrap>
             <FieldImg src={filedImg} />
-            <GameInfo>2회초 수비</GameInfo>
+            <GameInfo>* 2회초 수비</GameInfo>
         </Wrap>
     );
 };
