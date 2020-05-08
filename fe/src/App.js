@@ -10,13 +10,17 @@ import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 import styled from "styled-components"
 import Main from "./components/Main";
-import Game from "./components/Game";
+import Game from "./components/Game/Game";
 import backgroundImg from "./images/stadium.jpg";
 
 function App() {
   const StyleReset = createGlobalStyle`
         ${reset};
-    `;
+        @font-face { font-family: 'NeoDunggeunmo'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.3/NeoDunggeunmo.woff') format('woff'); font-weight: normal; font-style: normal; }
+        @font-face { font-family: 'GmarketSansBold'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff'); font-weight: normal; font-style: normal; }
+        @font-face { font-family: 'HangeulNuri-Bold'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_three@1.0/HangeulNuri-Bold.woff') format('woff'); font-weight: normal; font-style: normal; }
+   `;
+ 
   const Wrap = styled.div`
     background-image : url(${backgroundImg});
     background-size : 1500px;

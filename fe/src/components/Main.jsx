@@ -32,6 +32,7 @@ const Main = ({history}) => {
         font-weight :bold;
     `;
     const SelectMessage = styled.div`
+        font-family : 'NeoDunggeunmo';
         font-size : 20px;
         color : whitesmoke;
         margin : 30px;
