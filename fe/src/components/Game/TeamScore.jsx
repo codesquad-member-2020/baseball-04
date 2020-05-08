@@ -62,7 +62,7 @@ const TeamScore = () => {
         <Title>BASEBALL</Title>
         <Subtitle>o n l i n e - b a s e b a l l - g a m e</Subtitle>
         <ScoreWrap>
-            <Content>Captain</Content><Score>1</Score><Score style={{color : "#A33756"}}>vs</Score><Content>Marvel</Content><Score>2</Score>
+            <Content>LENA</Content><Score>1</Score><Score style={{color : "#A33756"}}>vs</Score><Content>JOY</Content><Score>2</Score>
         </ScoreWrap>
         <Player>▲</Player>
        </Wrap>

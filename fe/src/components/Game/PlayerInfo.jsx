@@ -1,6 +1,6 @@
 import React from 'react';
-import styled, { keyframes } from "styled-components"
-
+import styled, { keyframes } from "styled-components";
+import infoBackImg from '../../images/전광판.png';
 
 const PlayerInfo = () => {
 
@@ -8,10 +8,12 @@ const PlayerInfo = () => {
         width : 380px;
         height : 200px;
         box-sizing : border-box;
-        background: rgba(255,255,255, 0.2);
+        /* background: rgba(255,255,255, 1); */
         margin : 10px;
         padding : 20px;
         border-radius : 10px;
+        border : solid 8px #a33756;
+        background-image : url(${infoBackImg});
     `;
 
     const PlayerWrap = styled.div`
@@ -21,14 +23,14 @@ const PlayerInfo = () => {
     const Position = styled.div`
         font-family : 'NeoDunggeunmo';
         font-size : 20px;
-        margin-left : 5px;
+        /* margin-left : 5px; */
         color : white;
     `;
 
     const InfoWrap = styled.div`
         display : flex;
         height : 45px;
-        margin-top :10px;
+        margin-top :5px;
         /* padding : 5px 5px 5px 10px; */
         box-sizing : border-box;
 
@@ -39,9 +41,8 @@ const PlayerInfo = () => {
         height : 100%;
         line-height :45px;
         color : white;
-        font-size : 25px;
-        padding : 0px 5px 0px 5px;
-        background : #A33756;
+        font-size : 23px;
+        /* padding : 0px 5px 0px 5px; */
         box-sizing : border-box;
 
     `;
@@ -51,7 +52,7 @@ const PlayerInfo = () => {
         height : 100%;
         line-height : 45px;
         color : #28d685;
-        font-size : 25px;
+        font-size : 23px;
         margin-left : 10px;
         box-sizing : border-box;
 
@@ -61,11 +62,11 @@ const PlayerInfo = () => {
       <Wrap>
           <PlayerWrap>
               <Position>[ 투수 ]</Position>
-              <InfoWrap><Player>데이비드</Player><Info>#39</Info></InfoWrap>
+              <InfoWrap><Player>▶ 데이비드</Player><Info>#39</Info></InfoWrap>
           </PlayerWrap>
           <PlayerWrap>
               <Position>[ 타자 ]</Position>
-              <InfoWrap><Player>하밀</Player><Info>1타석 0안타</Info> </InfoWrap>
+              <InfoWrap><Player>▶ 하밀</Player><Info>1타석 0안타</Info> </InfoWrap>
           </PlayerWrap>
       </Wrap>
     );
