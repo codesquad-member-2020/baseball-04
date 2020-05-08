@@ -13,6 +13,7 @@ const TeamScore = () => {
     `;
 
     const Title = styled.div`
+      font-family : 'NeoDunggeunmo';
       font-size: 40px;
       color: #ffffff;
       text-shadow: -4px 0 #a33756, 0 4px #a33756, 4px 0 #a33756, 0 -4px #a33756;
@@ -38,14 +39,14 @@ const TeamScore = () => {
     `;
 
     const Content = styled.div`
-        font-family: 'HangeulNuri-Bold';
-        font-size : 40px;
+        font-family : 'NeoDunggeunmo';
+        font-size : 45px;
         color : white;
         margin : 15px 30px 15px 30px;
     `;
 
     const Score = styled.div`
-        font-family: 'GmarketSansBold';
+        font-family : 'NeoDunggeunmo';
         font-size : 40px;
         color : white;
         margin : 15px 30px 15px 30px;
