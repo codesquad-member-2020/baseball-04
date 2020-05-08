@@ -15,6 +15,7 @@ const Field = () => {
         display : flex;
         justify-content:space-between;
         padding : 10px;
+        position : relative;
     `;
 
     const SBOWrap = styled.div`
@@ -54,36 +55,36 @@ const Field = () => {
     `;
 
     const Route1 = styled.div`
-      /* border-bottom : solid 3px red; */
+      border-bottom : solid 3px red;
       position: absolute;
       width: 320px;
-      top: 570px;
-      left: 700px;
+      top: 305px;
+      left: 465px;
       transform: rotate(-47deg);
     `;
     const Route2 = styled.div`
-      /* border-bottom : solid 3px red; */
+      border-bottom : solid 3px red;
       position: absolute;
       width: 280px;
-      top: 375px;
-      left: 770px;
+      top: 110px;
+      left: 540px;
       transform: rotate(39deg);
     `;
      const Route3 = styled.div`
-       /* border-bottom : solid 3px red; */
+       border-bottom : solid 3px red;
        position: absolute;
        width: 280px;
-       top: 370px;
-       left: 525px;
+       top: 105px;
+       left: 295px;
        transform: rotate(-38deg);
      `;
 
      const Route4 = styled.div`
-       /* border-bottom : solid 3px red; */
+       border-bottom : solid 3px red;
        position: absolute;
        width: 320px;
-       top: 565px;
-       left: 545px;
+       top: 300px;
+       left: 310px;
        transform: rotate(48deg);
      `;
     const AniImg = styled.img`
