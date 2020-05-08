@@ -58,7 +58,7 @@ const Field = () => {
       position: absolute;
       width: 320px;
       top: 570px;
-      left: 500px;
+      left: 700px;
       transform: rotate(-47deg);
     `;
     const Route2 = styled.div`
@@ -66,7 +66,7 @@ const Field = () => {
       position: absolute;
       width: 280px;
       top: 375px;
-      left: 570px;
+      left: 770px;
       transform: rotate(39deg);
     `;
      const Route3 = styled.div`
@@ -74,7 +74,7 @@ const Field = () => {
        position: absolute;
        width: 280px;
        top: 370px;
-       left: 325px;
+       left: 525px;
        transform: rotate(-38deg);
      `;
 
@@ -83,7 +83,7 @@ const Field = () => {
        position: absolute;
        width: 320px;
        top: 565px;
-       left: 345px;
+       left: 545px;
        transform: rotate(48deg);
      `;
     const AniImg = styled.img`
