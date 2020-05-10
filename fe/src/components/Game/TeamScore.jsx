@@ -2,14 +2,14 @@ import React from 'react';
 import styled, { keyframes } from "styled-components"
 
 
-const TeamScore = () => {
+const TeamScore = (props) => {
 
     const Wrap = styled.div`
       width: 1100px;
       height: 200px;
       box-sizing: border-box;
       text-align : center;
-  
+      position : relative;
     `;
 
     const Title = styled.div`
@@ -25,6 +25,16 @@ const TeamScore = () => {
     const Subtitle = styled.div`
         font-size : 15px;
         color : #A33756;
+    `;
+
+    const PopupBtn = styled.button`
+        position : absolute;
+        top : 40px;
+        left : 920px;
+        font-size : 16px;
+        border-radius : 5px;
+        padding : 5px;
+        font-family : 'NeoDunggeunmo';
     `;
 
     const ScoreWrap = styled.div`
@@ -57,10 +67,15 @@ const TeamScore = () => {
         margin-left : 300px;
     `;
 
+    const popupBtnHandler = ()=>{
+        props.history.push('/score_players');
+    };
+
     return (
        <Wrap>
         <Title>BASEBALL</Title>
         <Subtitle>o n l i n e - b a s e b a l l - g a m e</Subtitle>
+        <PopupBtn onClick={popupBtnHandler}>상세 점수·선수 명단</PopupBtn>
         <ScoreWrap>
             <Content>LENA</Content><Score>1</Score><Score style={{color : "#A33756"}}>vs</Score><Content>JOY</Content><Score>2</Score>
         </ScoreWrap>

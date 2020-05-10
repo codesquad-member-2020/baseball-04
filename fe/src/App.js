@@ -6,11 +6,11 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import { createGlobalStyle } from "styled-components";
+import styled,{ createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
-import styled from "styled-components"
 import Main from "./components/Main";
 import Game from "./components/Game/Game";
+import Popup from "./components/Popup";
 import backgroundImg from "./images/stadium.jpg";
 
 function App() {
@@ -37,7 +37,8 @@ function App() {
         <StyleReset />
         <Switch>
         <Route exact path="/" component ={Main}/> 
-        <Route path="/game" component ={Game}/> 
+        <Route path="/game" component ={Game}/>
+        <Route path="/score_players" component = {Popup}/> 
         </Switch>
       </Wrap>
       </Router>

@@ -5,7 +5,7 @@ import Field from './Field';
 import PlayerInfo from './PlayerInfo';
 import BattingLog from './BattingLog';
 
-const Game = () => {
+const Game = ({history}) => {
 
     const Wrap = styled.div`
         width : 100%;
@@ -18,7 +18,7 @@ const Game = () => {
 
     return (
        <Wrap>
-           <TeamScore/>
+           <TeamScore history={history}/>
            <PlayerInfo/>
            <Field/>
            <BattingLog/>

@@ -60,7 +60,6 @@ const BattingLog = () => {
 
     const Result = styled.div`
         color : #28d685;
-        /* color : #AAA4FA; */
         margin-bottom : 15px;
         margin-left : 5px;
         margin-right : 25px;
