@@ -1,9 +1,6 @@
 import React from 'react';
 import styled, { keyframes } from "styled-components";
 import filedImg from '../../images/diamond2.png';
-// import filedImg from '../../images/field2.png';
-// import filedImg from '../../images/diamond.jpg';
-
 
 
 const Field = () => {
@@ -55,7 +52,7 @@ const Field = () => {
     `;
 
     const Route1 = styled.div`
-      border-bottom : solid 3px red;
+      /* border-bottom : solid 3px red; */
       position: absolute;
       width: 320px;
       top: 305px;
@@ -63,7 +60,7 @@ const Field = () => {
       transform: rotate(-47deg);
     `;
     const Route2 = styled.div`
-      border-bottom : solid 3px red;
+      /* border-bottom : solid 3px red; */
       position: absolute;
       width: 280px;
       top: 110px;
@@ -71,7 +68,7 @@ const Field = () => {
       transform: rotate(39deg);
     `;
      const Route3 = styled.div`
-       border-bottom : solid 3px red;
+       /* border-bottom : solid 3px red; */
        position: absolute;
        width: 280px;
        top: 105px;
@@ -80,7 +77,7 @@ const Field = () => {
      `;
 
      const Route4 = styled.div`
-       border-bottom : solid 3px red;
+       /* border-bottom : solid 3px red; */
        position: absolute;
        width: 320px;
        top: 300px;
