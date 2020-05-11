@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled, { css, keyframes } from "styled-components";
 import filedImg from '../../images/diamond2.png';
-import hitSound from '../../audio/hit.mp3';
 
 const Field = () => {
 

@@ -84,7 +84,7 @@ const Main = ({history}) => {
       height: 140px;
       ${props => {
          if(props.run){
-             return css`animation : ${run} 12s infinite;`
+             return css`animation : ${run} 8s infinite;`
          }
      }}
     `;
