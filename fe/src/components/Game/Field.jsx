@@ -1,7 +1,6 @@
-import React from 'react';
-import styled, { keyframes } from "styled-components";
+import React, { useState, useEffect } from "react";
+import styled, { css, keyframes } from "styled-components";
 import filedImg from '../../images/diamond2.png';
-
 
 const Field = () => {
 
@@ -13,6 +12,7 @@ const Field = () => {
         justify-content:space-between;
         padding : 10px;
         position : relative;
+        overflow : hidden;
     `;
 
     const SBOWrap = styled.div`
@@ -87,15 +87,45 @@ const Field = () => {
     `;
 
     const StrikeBtn = styled.button`
-         font-family : 'NeoDunggeunmo';
-         font-size : 20px;
-        background : blue;
-        color : white;
-        border-radius : 10px;
-        outline :0;
-        border : 0;
+      font-family: "NeoDunggeunmo";
+      font-size: 20px;
+      background: blue;
+      color: white;
+      border-radius: 10px;
+      outline: 0;
+      border: 0;
     `;
 
+    //초기 0, 이동 270
+    const move1 = keyframes`
+    0%{
+     margin-left : 0px;
+    }
+    100%{ 
+     margin-left : 270px;
+    }
+    `;
+    // 초기 0, 이동 210 -> -25
+    const move23 = keyframes`
+    0% {
+     margin-left : 210px;
+    }
+    100% { 
+     margin-left : -25px;
+     }
+    `;
+    const move4 = keyframes`
+    0%{
+     margin-left : 0px;
+    }
+    80%{ 
+     margin-left : 400px;
+    }
+   100%{
+    width :0px;
+   }
+    
+    `;
     const Route1 = styled.div`
       /* border-bottom : solid 3px red; */
       position: absolute;
@@ -110,40 +140,38 @@ const Field = () => {
       width: 280px;
       top: 110px;
       left: 450px;
-      transform: rotate(41deg);
+      transform: rotate(42deg);
     `;
      const Route3 = styled.div`
        /* border-bottom : solid 3px red; */
        position: absolute;
        width: 280px;
        top: 105px;
-       left: 225px;
-       transform: rotate(-42deg);
+       left: 235px;
+       transform: rotate(-40deg);
      `;
 
      const Route4 = styled.div`
        /* border-bottom : solid 3px red; */
        position: absolute;
-       width: 320px;
-       top: 300px;
-       left: 250px;
-       transform: rotate(51deg);
+       width: 330px;
+       top: 295px;
+       left: 230px;
+       transform: rotate(50deg);
      `;
-    const AniImg = styled.img`
+    const AniImg1 = styled.img`
       height: 70px;
-      margin-left: 150px;
-      /* transform:rotate(0deg);
-        -moz-transform: scaleX(-1); 
-        -o-transform: scaleX(-1); 
-        -webkit-transform: scaleX(-1); 
-        transform: scaleX(-1);   
-        filter: FlipH;
-        -ms-filter: "FlipH"; */
+      margin-left : 0px;
+     ${props => {
+         if(props.active){
+             return css`animation : ${move1} 2s forwards`;
+         }
+     }}
     `;
 
     const AniImg2 = styled.img`
       height: 70px;
-      margin-left: -30px;
+      margin-left : 210px;
       transform: rotate(0deg);
       -moz-transform: scaleX(-1);
       -o-transform: scaleX(-1);
@@ -151,7 +179,41 @@ const Field = () => {
       transform: scaleX(-1);
       filter: FlipH;
       -ms-filter: "FlipH";
+      ${props => {
+         if(props.active){
+             return css`animation : ${move23} 2s forwards`;
+         }
+     }}
     `;
+
+    const AniImg3 = styled.img`
+      height: 70px;
+      margin-left : 210px;
+      transform: rotate(0deg);
+      -moz-transform: scaleX(-1);
+      -o-transform: scaleX(-1);
+      -webkit-transform: scaleX(-1);
+      transform: scaleX(-1);
+      filter: FlipH;
+      -ms-filter: "FlipH";
+      ${props => {
+         if(props.active){
+             return css`animation : ${move23} 2s forwards`;
+         }
+     }}
+    `;
+    const AniImg4 = styled.img`
+      height: 70px;
+      margin-left: 0px;
+      ${props => {
+         if(props.active){
+             return css`animation : ${move4} 3.5s forwards`;
+         }
+     }}
+    `;
+
+    const [batterPosition, setBatterPosition] = useState(0);
+
 
     const pitchBtnClickHandler = ()=> {
         const btnWrap = document.getElementById('BSBtn');
@@ -166,6 +228,21 @@ const Field = () => {
     const strikeBtnClickHandler = ()=>{
         const btnWrap = document.getElementById('BSBtn');
         btnWrap.style.display = "none";
+        setBatterPosition(batterPosition + 1);
+    };
+
+    const runningAnimation = ()=> {
+
+        const img = "https://media2.giphy.com/media/YrCNxwsXSVLlw0TY1R/giphy.gif?cid=ecf05e47699788e3a0754d3861099fa54128c0c53f4695a0&rid=giphy.gif";
+        
+        if(batterPosition === 1){return <><Route1><AniImg1 active src={img}/></Route1></>}
+        if(batterPosition === 2){return <><Route1><AniImg1 active src={img}/></Route1><Route2><AniImg2 active src={img} /></Route2> </>}
+        if(batterPosition === 3){return <><Route1><AniImg1 active src={img} /></Route1><Route2><AniImg2 active src={img}/></Route2><Route3><AniImg3 active src={img}/></Route3></>};
+        if(4<=batterPosition&&batterPosition<=9){return <><Route1><AniImg1 active src={img} /></Route1><Route2><AniImg2 active src={img}/></Route2><Route3><AniImg3 active src={img}/></Route3><Route4><AniImg4 active src={img}/></Route4></>}
+        if(batterPosition===10){return <><Route2><AniImg2 active src={img}/></Route2><Route3><AniImg3 active src={img}/></Route3><Route4><AniImg4 active src={img}/></Route4></>}
+        if(batterPosition===11){return <><Route3><AniImg3 active src={img}/></Route3><Route4><AniImg4 active src={img}/></Route4></>}
+        if(batterPosition===12){return <><Route4><AniImg4 active src={img}/></Route4></>}
+        if(batterPosition>12) return;
     };
 
     return (
@@ -175,18 +252,7 @@ const Field = () => {
                 <SBO>B<Count style={{color : 'green'}}>●●●</Count></SBO>
                 <SBO>O<Count style={{color : 'red'}}>●●</Count></SBO>
             </SBOWrap>
-            <Route1>
-                <AniImg src="https://media2.giphy.com/media/YrCNxwsXSVLlw0TY1R/giphy.gif?cid=ecf05e47699788e3a0754d3861099fa54128c0c53f4695a0&rid=giphy.gif" />
-            </Route1>
-            <Route2>
-                <AniImg2 src="https://media2.giphy.com/media/YrCNxwsXSVLlw0TY1R/giphy.gif?cid=ecf05e47699788e3a0754d3861099fa54128c0c53f4695a0&rid=giphy.gif" />
-            </Route2>
-            <Route3>
-                <AniImg2 style={{marginLeft:"50px"}} src="https://media2.giphy.com/media/YrCNxwsXSVLlw0TY1R/giphy.gif?cid=ecf05e47699788e3a0754d3861099fa54128c0c53f4695a0&rid=giphy.gif" />
-            </Route3>
-            <Route4>
-                <AniImg  src="https://media2.giphy.com/media/YrCNxwsXSVLlw0TY1R/giphy.gif?cid=ecf05e47699788e3a0754d3861099fa54128c0c53f4695a0&rid=giphy.gif" />
-            </Route4>
+            {runningAnimation()}
             <PitchBtn onClick={pitchBtnClickHandler}>Pitch!</PitchBtn>
             <PitchBtnWrap id="BSBtn"><BallBtn onClick={ballBtnClickHandler}>Ball</BallBtn><StrikeBtn onClick={strikeBtnClickHandler}>Strike</StrikeBtn></PitchBtnWrap>
             <FieldImg src={filedImg} />
