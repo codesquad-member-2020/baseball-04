@@ -19,7 +19,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                .select()
-               .apis(RequestHandlerSelectors.any())
+               .apis(RequestHandlerSelectors.basePackage("io.codesquad.baseball.game"))
                .paths(PathSelectors.any())
                .build();
     }
