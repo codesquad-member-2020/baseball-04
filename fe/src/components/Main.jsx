@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { keyframes } from "styled-components"
+import styled, { css, keyframes } from "styled-components"
 import GameList from "./GameList"
 
 const Main = ({history}) => {
@@ -34,11 +34,29 @@ const Main = ({history}) => {
         color : #A33756;
         font-weight :bold;
     `;
+
+    
+    const blink = keyframes`
+    0% {
+       color : white;
+    }
+    80%{
+        color : white;
+    }
+    100% { 
+       color :  #00ff0000;
+    }
+    `;
     const SelectMessage = styled.div`
         font-family : 'NeoDunggeunmo';
         font-size : 20px;
         color : whitesmoke;
         margin : 30px;
+        ${props => {
+         if(props.active){
+             return css`animation : ${blink} 0.8s infinite alternate`;
+         }
+     }}
     `;
     const BaseballImg = styled.img`
         height : 80px;
@@ -58,15 +76,8 @@ const Main = ({history}) => {
     const AniImg = styled.img`
       height: 110px;
       margin-left : 230px;
-      /* transform:rotate(0deg);
-        -moz-transform: scaleX(-1); 
-        -o-transform: scaleX(-1); 
-        -webkit-transform: scaleX(-1); 
-        transform: scaleX(-1);   
-        filter: FlipH;
-        -ms-filter: "FlipH"; */
-       
     `;
+
 
     return (
         <>
@@ -78,7 +89,7 @@ const Main = ({history}) => {
         <BaseballImg src = "https://media3.giphy.com/media/cKnZaQbUWKv7QkYnFe/giphy.gif?cid=ecf05e4798aafc218b996e1a365bd43462688d94999f2bb6&rid=giphy.gif"/>
         </TitleWrap>
         <Subtitle>o n l i n e - b a s e b a l l - g a m e</Subtitle>
-        <SelectMessage>참가할 게임을 선택해주세요.</SelectMessage>
+        <SelectMessage active >참가할 게임을 선택해주세요.</SelectMessage>
         <GameList history={history} />
         </ContentWrap>
         </MainWrap>
