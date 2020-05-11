@@ -6,7 +6,6 @@ const Main = ({history}) => {
     const MainWrap = styled.div`
         display : flex;
         justify-content : center;
-        
     `;
     const ContentWrap = styled.div`
         display : flex;
@@ -66,18 +65,29 @@ const Main = ({history}) => {
 
     const Animation = styled.div`
       display : flex;
-      border-bottom: solid 10px #28d685;
-      width: 1400px;
-      height: 110px;
+      /* border-bottom: solid 5px #28d685; */
+      width: 1450px;
       margin: auto;
+      overflow : hidden;
     `;
 
-
+    const run = keyframes`
+    0% {
+       margin-left : 0px;
+    }
+    100% { 
+        margin-left : 1600px;
+    }
+    `;
+   
     const AniImg = styled.img`
-      height: 110px;
-      margin-left : 230px;
+      height: 140px;
+      ${props => {
+         if(props.run){
+             return css`animation : ${run} 12s infinite;`
+         }
+     }}
     `;
-
 
     return (
         <>
@@ -94,9 +104,7 @@ const Main = ({history}) => {
         </ContentWrap>
         </MainWrap>
         <Animation>
-            <AniImg src="https://media2.giphy.com/media/YrCNxwsXSVLlw0TY1R/giphy.gif?cid=ecf05e47699788e3a0754d3861099fa54128c0c53f4695a0&rid=giphy.gif" />
-            <div style={{width: "800px"}}></div>
-            <div style={{width:"70px",borderBottom:"solid 20px #DC7B37"}}></div>
+            <AniImg run src="https://media2.giphy.com/media/YrCNxwsXSVLlw0TY1R/giphy.gif?cid=ecf05e47699788e3a0754d3861099fa54128c0c53f4695a0&rid=giphy.gif" />
         </Animation>
         </>
     );
