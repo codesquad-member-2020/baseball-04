@@ -14,6 +14,7 @@ const Game = ({history}) => {
         flex-wrap : wrap;
         background: #241D4F;
         padding : 10px;
+        box-sizing : border-box;
     `;
 
     return (

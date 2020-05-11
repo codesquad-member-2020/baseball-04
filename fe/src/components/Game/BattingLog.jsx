@@ -10,7 +10,8 @@ const BattingLog = () => {
     background: rgba(0,0,0, 0.3);
     border-radius : 15px;
     padding : 25px 30px;
-    margin : auto;
+    /* margin : auto; */
+    margin-left : 40px;
     margin-top : 15px;
     overflow-y : scroll;
     &::-webkit-scrollbar { width: 15px;}

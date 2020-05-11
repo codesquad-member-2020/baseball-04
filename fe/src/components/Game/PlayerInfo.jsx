@@ -9,7 +9,7 @@ const PlayerInfo = () => {
         height : 200px;
         box-sizing : border-box;
         /* background: rgba(255,255,255, 1); */
-        margin : 10px;
+        margin : 10px 10px 10px 30px;
         padding : 20px;
         border-radius : 10px;
         border : solid 8px #a33756;

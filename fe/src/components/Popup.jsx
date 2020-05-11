@@ -1,7 +1,8 @@
 import React from 'react';
 import styled, { keyframes } from "styled-components"
+import { cloneNode } from '@babel/types';
 
-const Popup = () => {
+const Popup = ({history}) => {
 
     const Wrap = styled.div`
         width : 100%;
@@ -26,8 +27,23 @@ const Popup = () => {
         flex-direction : column;
         justify-content :center;
         align-items :center;
+        background: rgba(0,0,0, 0.3);
+
     `;
    
+    const CloseBtn = styled.button`
+        border :0;
+        outline : 0;
+        background : #00ff0000;
+        color : white;
+        font-size : 40px;
+        position : absolute;
+        top : 0;
+        right : 70px;
+        &:hover {
+            color : #28d685;
+        };
+    `;
 
     const RoundWrap = styled.div`
       display: flex;
@@ -68,7 +84,6 @@ const Popup = () => {
       width: 150px;
       text-align: center;
       box-sizing: border-box;
-      border-bottom : solid 3px #241D4F;
       display :flex;
       justify-content : center;
     `;
@@ -91,6 +106,8 @@ const Popup = () => {
         margin : 10px 0px;
         padding : 15px;
         box-sizing : border-box;
+        background: rgba(0,0,0, 0.3);
+
     `;
 
     const TeamNameWrap = styled.div`
@@ -155,8 +172,14 @@ const Popup = () => {
         font-weight : bold;
     `;
 
+    const closeBtnHandler = ()=>{
+        history.push('/game');
+
+    };
+
     return (
         <Wrap> 
+            <CloseBtn onClick={closeBtnHandler}>X</CloseBtn>
         <ScoreWrap>
             <RoundWrap><Playing></Playing><ScoreTeamName></ScoreTeamName><Round>1</Round><Round>2</Round><Round>3</Round><Round>4</Round><Round>5</Round><Round>6</Round><Round>7</Round><Round>8</Round><Round>9</Round><Round>10</Round><Round>11</Round><Round>12</Round><Round>R</Round></RoundWrap>
             <TeamScoreWrap><Playing>⚾</Playing><ScoreTeamName>LENA<ScorePlayerIndication></ScorePlayerIndication></ScoreTeamName><Round>1</Round><Round>0</Round><Round>0</Round><Round>0</Round><Round></Round><Round></Round><Round></Round><Round></Round><Round></Round><Round></Round><Round></Round><Round></Round><Result>1</Result></TeamScoreWrap>

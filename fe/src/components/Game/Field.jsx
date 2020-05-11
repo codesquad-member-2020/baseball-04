@@ -6,7 +6,7 @@ import filedImg from '../../images/diamond2.png';
 const Field = () => {
 
     const Wrap = styled.div`
-        width : 1100px;
+        width : 1000px;
         height : 600px;
         box-sizing : border-box;
         display : flex;
@@ -40,8 +40,9 @@ const Field = () => {
         font-family : 'NeoDunggeunmo';
         font-size : 30px;
         color : white;
-        padding : 15px;
-        margin-right : 10px;
+        padding : 25px;
+        width : 200px;
+        margin : 0px 10px;
 
     `;
     const FieldImg = styled.img`
@@ -51,29 +52,73 @@ const Field = () => {
         border-radius : 10px;
     `;
 
+    const PitchBtn = styled.button`
+        position : absolute;
+        font-family : 'NeoDunggeunmo';
+        top : 230px;
+        left : 427px;
+        font-size : 30px;
+        border-radius : 10px;
+        outline : 0;
+        background : #BDBDBD;
+    `;
+
+    const PitchBtnWrap = styled.div`
+        display : flex;
+        position : absolute;
+        top : 200px;
+        left : 405px;
+        width : 150px;
+        display : flex;
+        justify-content : center;
+        margin : 2px;
+        display : none ; 
+        
+    `;
+    const BallBtn = styled.button`
+        font-family : 'NeoDunggeunmo';
+        font-size : 20px;
+        background : #E26D07;
+        color : white;
+        border-radius : 10px;
+        outline :0;
+        border : 0;
+        margin-right :5px;
+    `;
+
+    const StrikeBtn = styled.button`
+         font-family : 'NeoDunggeunmo';
+         font-size : 20px;
+        background : blue;
+        color : white;
+        border-radius : 10px;
+        outline :0;
+        border : 0;
+    `;
+
     const Route1 = styled.div`
       /* border-bottom : solid 3px red; */
       position: absolute;
       width: 320px;
       top: 305px;
-      left: 465px;
-      transform: rotate(-47deg);
+      left: 385px;
+      transform: rotate(-50deg);
     `;
     const Route2 = styled.div`
       /* border-bottom : solid 3px red; */
       position: absolute;
       width: 280px;
       top: 110px;
-      left: 540px;
-      transform: rotate(39deg);
+      left: 450px;
+      transform: rotate(41deg);
     `;
      const Route3 = styled.div`
        /* border-bottom : solid 3px red; */
        position: absolute;
        width: 280px;
        top: 105px;
-       left: 295px;
-       transform: rotate(-38deg);
+       left: 225px;
+       transform: rotate(-42deg);
      `;
 
      const Route4 = styled.div`
@@ -81,8 +126,8 @@ const Field = () => {
        position: absolute;
        width: 320px;
        top: 300px;
-       left: 310px;
-       transform: rotate(48deg);
+       left: 250px;
+       transform: rotate(51deg);
      `;
     const AniImg = styled.img`
       height: 70px;
@@ -108,6 +153,21 @@ const Field = () => {
       -ms-filter: "FlipH";
     `;
 
+    const pitchBtnClickHandler = ()=> {
+        const btnWrap = document.getElementById('BSBtn');
+        btnWrap.style.display = "flex";
+    };
+
+    const ballBtnClickHandler = ()=>{
+        const btnWrap = document.getElementById('BSBtn');
+        btnWrap.style.display = "none";
+    };
+
+    const strikeBtnClickHandler = ()=>{
+        const btnWrap = document.getElementById('BSBtn');
+        btnWrap.style.display = "none";
+    };
+
     return (
         <Wrap>
             <SBOWrap>
@@ -127,8 +187,10 @@ const Field = () => {
             <Route4>
                 <AniImg  src="https://media2.giphy.com/media/YrCNxwsXSVLlw0TY1R/giphy.gif?cid=ecf05e47699788e3a0754d3861099fa54128c0c53f4695a0&rid=giphy.gif" />
             </Route4>
+            <PitchBtn onClick={pitchBtnClickHandler}>Pitch!</PitchBtn>
+            <PitchBtnWrap id="BSBtn"><BallBtn onClick={ballBtnClickHandler}>Ball</BallBtn><StrikeBtn onClick={strikeBtnClickHandler}>Strike</StrikeBtn></PitchBtnWrap>
             <FieldImg src={filedImg} />
-            <GameInfo>* 2회초 수비</GameInfo>
+            <GameInfo>2회초 수비</GameInfo>
         </Wrap>
     );
 };
