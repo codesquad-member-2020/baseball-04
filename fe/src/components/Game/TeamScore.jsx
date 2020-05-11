@@ -5,7 +5,7 @@ import styled, { keyframes } from "styled-components"
 const TeamScore = (props) => {
 
     const Wrap = styled.div`
-      width: 1100px;
+      width: 1000px;
       height: 200px;
       box-sizing: border-box;
       text-align : center;
@@ -30,7 +30,11 @@ const TeamScore = (props) => {
     const PopupBtn = styled.button`
         position : absolute;
         top : 40px;
-        left : 920px;
+        left : 820px;
+        outline : 0;
+        background : rgba(255,255,255, 0.7);
+        border : solid 3px rgba(0,0,0, 0.5);
+        box-sizing : border-box;
         font-size : 16px;
         border-radius : 5px;
         padding : 5px;
