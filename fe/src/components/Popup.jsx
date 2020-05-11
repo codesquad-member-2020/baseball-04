@@ -200,7 +200,7 @@ const Popup = ({history}) => {
                 <PlayerName>강운</PlayerName><Values>1</Values><Values>1</Values><Values>0</Values><Values>1.000</Values>
             </PlayerWrap>
             <PlayerWrap>
-                <PlayerName>울라프</PlayerName><Values>1</Values><Values>1</Values><Values>0</Values><Values>1.000</Values>
+                <PlayerName>올라프</PlayerName><Values>1</Values><Values>1</Values><Values>0</Values><Values>1.000</Values>
             </PlayerWrap>
             <PlayerWrap style={{color : '#FA5882'}}>
                 <PlayerName>또치</PlayerName><Values>1</Values><Values>1</Values><Values>0</Values><Values>1.000</Values>
