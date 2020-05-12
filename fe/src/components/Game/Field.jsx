@@ -4,6 +4,9 @@ import filedImg from '../../images/diamond2.png';
 
 const Field = () => {
 
+    const [batterPosition, setBatterPosition] = useState(0);
+    const [btnStyle, setBtnStyle] = useState({display : "none"});
+
     const Wrap = styled.div`
         width : 1000px;
         height : 600px;
@@ -64,12 +67,10 @@ const Field = () => {
     `;
 
     const PitchBtnWrap = styled.div`
-        display : flex;
         position : absolute;
         top : 200px;
         left : 405px;
         width : 150px;
-        display : flex;
         justify-content : center;
         margin : 2px;
         display : none ; 
@@ -212,22 +213,21 @@ const Field = () => {
      }}
     `;
 
-    const [batterPosition, setBatterPosition] = useState(0);
+
+
 
 
     const pitchBtnClickHandler = ()=> {
-        const btnWrap = document.getElementById('BSBtn');
-        btnWrap.style.display = "flex";
+        setBtnStyle({display : "flex"});
     };
 
     const ballBtnClickHandler = ()=>{
-        const btnWrap = document.getElementById('BSBtn');
-        btnWrap.style.display = "none";
+        setBtnStyle({display : "none"});
+
     };
 
     const strikeBtnClickHandler = ()=>{
-        const btnWrap = document.getElementById('BSBtn');
-        btnWrap.style.display = "none";
+        setBtnStyle({display : "none"});
         setBatterPosition(batterPosition + 1);
     };
 
@@ -238,11 +238,7 @@ const Field = () => {
         if(batterPosition === 1){return <><Route1><AniImg1 active src={img}/></Route1></>}
         if(batterPosition === 2){return <><Route1><AniImg1 active src={img}/></Route1><Route2><AniImg2 active src={img} /></Route2> </>}
         if(batterPosition === 3){return <><Route1><AniImg1 active src={img} /></Route1><Route2><AniImg2 active src={img}/></Route2><Route3><AniImg3 active src={img}/></Route3></>};
-        if(4<=batterPosition&&batterPosition<=9){return <><Route1><AniImg1 active src={img} /></Route1><Route2><AniImg2 active src={img}/></Route2><Route3><AniImg3 active src={img}/></Route3><Route4><AniImg4 active src={img}/></Route4></>}
-        if(batterPosition===10){return <><Route2><AniImg2 active src={img}/></Route2><Route3><AniImg3 active src={img}/></Route3><Route4><AniImg4 active src={img}/></Route4></>}
-        if(batterPosition===11){return <><Route3><AniImg3 active src={img}/></Route3><Route4><AniImg4 active src={img}/></Route4></>}
-        if(batterPosition===12){return <><Route4><AniImg4 active src={img}/></Route4></>}
-        if(batterPosition>12) return;
+        if(4<=batterPosition){return <><Route1><AniImg1 active src={img} /></Route1><Route2><AniImg2 active src={img}/></Route2><Route3><AniImg3 active src={img}/></Route3><Route4><AniImg4 active src={img}/></Route4></>}
     };
 
     return (
@@ -254,7 +250,7 @@ const Field = () => {
             </SBOWrap>
             {runningAnimation()}
             <PitchBtn onClick={pitchBtnClickHandler}>Pitch!</PitchBtn>
-            <PitchBtnWrap id="BSBtn"><BallBtn onClick={ballBtnClickHandler}>Ball</BallBtn><StrikeBtn onClick={strikeBtnClickHandler}>Strike</StrikeBtn></PitchBtnWrap>
+            <PitchBtnWrap style={btnStyle}><BallBtn onClick={ballBtnClickHandler}>Ball</BallBtn><StrikeBtn onClick={strikeBtnClickHandler}>Strike</StrikeBtn></PitchBtnWrap>
             <FieldImg src={filedImg} />
             <GameInfo>2회초 수비</GameInfo>
         </Wrap>
