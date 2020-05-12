@@ -26,6 +26,7 @@ public class GameService {
         boolean teamIsAvailable = teamData.get("isAvailable");
         if (teamIsAvailable) {
             gameDao.updateTeamAsUnavailable(gameId, teamId);
+            session.setAttribute("gameId", gameId);
             session.setAttribute("isHome", teamData.get("isHome"));
         }
         return teamIsAvailable;

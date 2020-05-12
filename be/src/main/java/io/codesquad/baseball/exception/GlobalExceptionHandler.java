@@ -15,4 +15,10 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
                              .body(ex.getMessage());
     }
 
+    @ExceptionHandler(InvalidMatchRequestException.class)
+    public ResponseEntity<String> handleInvalidMatchRequestException(InvalidMatchRequestException ex) {
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+                             .body(ex.getMessage());
+    }
+
 }

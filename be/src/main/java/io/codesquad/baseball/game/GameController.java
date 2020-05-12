@@ -19,9 +19,11 @@ import java.util.List;
 public class GameController {
 
     private final GameService gameService;
+    private final GameMatcher gameMatcher;
 
-    public GameController(GameService gameService) {
+    public GameController(GameService gameService, GameMatcher gameMatcher) {
         this.gameService = gameService;
+        this.gameMatcher = gameMatcher;
     }
 
     @GetMapping("/games")
@@ -41,7 +43,9 @@ public class GameController {
     }
 
     @GetMapping("/games/{gameId}")
-    public ResponseEntity<GameScreenData> joinGameAsTeam(@PathVariable long gameId) {
+    public ResponseEntity<GameScreenData> joinGameAsTeam(@PathVariable long gameId,
+                                                         HttpSession session) throws InterruptedException {
+        gameMatcher.matchGame(gameId, session);
         return null;
     }
 
