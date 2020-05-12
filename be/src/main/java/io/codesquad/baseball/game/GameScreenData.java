@@ -1,6 +1,8 @@
 package io.codesquad.baseball.game;
 
 import io.codesquad.baseball.game.atbat.AtBat;
+import io.codesquad.baseball.game.atbat.CurrentAtBat;
+import io.codesquad.baseball.game.halfinning.HalfInningStatus;
 import lombok.Builder;
 import lombok.Value;
 
@@ -10,30 +12,9 @@ import java.util.List;
 @Builder
 public class GameScreenData {
 
-    String homeName;
-    String awayName;
-    boolean userIsHome;
-    int homeScore;
-    int awayScore;
-
-    String pitcherName;
-    int pitchCount;
-    String batterName;
-    int atBatCount;
-    int hitCount;
-
-    int strikeCount;
-    int ballCount;
-    int outCount;
-
-    int inning;
-    boolean inningIsTop; // if false, then bottom
-    boolean userIsOffense;
-
-    boolean runnerIsOnFirstBase;
-    boolean runnerIsOnSecondBase;
-    boolean runnerIsOnThirdBase;
-
+    ScoreBoardSummary scoreBoard;
+    CurrentAtBat currentAtBat;
+    HalfInningStatus halfInningStatus;
     List<AtBat> atBats;
 
 }

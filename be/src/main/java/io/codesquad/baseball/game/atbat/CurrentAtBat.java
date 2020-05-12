@@ -1,16 +1,16 @@
-package io.codesquad.baseball.game.team.batter;
+package io.codesquad.baseball.game.atbat;
 
 import lombok.Builder;
 import lombok.Value;
 
 @Value
 @Builder
-public class BatterStat {
+public class CurrentAtBat {
 
+    String pitcherName;
+    int pitchCount;
     String batterName;
     int atBatCount;
     int hitCount;
-    int outCount;
-    String average;
 
 }

@@ -8,18 +8,9 @@ import lombok.Value;
 @Builder
 public class PitchOutcomeDetail {
 
-    String message;
-    boolean pitcherChoseStrike;
-    boolean pitcherThrewStrike;
-    boolean batterChoseSwing;
-    boolean outcomeIsStrike;
-    boolean outcomeIsBall;
-    boolean outcomeIsOut;
-    boolean outcomeIsHit;
-    boolean runnerAdvancesToFirstBase;
-    boolean runnerAdvancesToSecondBase;
-    boolean runnerAdvancesToThirdBase;
-    boolean runnerAdvancesToHomeBase;
+    boolean endOfHalfInning;
+    PitchDetail pitchDetail;
+    Baserunning baserunning;
     GameScreenData gameScreenData;
 
 }
