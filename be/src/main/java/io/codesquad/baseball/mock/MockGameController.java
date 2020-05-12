@@ -143,7 +143,9 @@ public class MockGameController {
 
     @PutMapping("/games/{gameId}/teams/{teamId}")
     public ResponseEntity<TeamSelectionResponse> selectTeam(@PathVariable long gameId, @PathVariable long teamId) {
-        return ResponseEntity.ok(new TeamSelectionResponse(true));
+        return ResponseEntity.ok(TeamSelectionResponse.builder()
+                                                      .teamSelectionAccepted(true)
+                                                      .build());
     }
 
     @GetMapping("/games/{gameId}")
