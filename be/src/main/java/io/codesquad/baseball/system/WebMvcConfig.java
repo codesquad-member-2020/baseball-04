@@ -1,9 +1,11 @@
 package io.codesquad.baseball.system;
 
+import io.codesquad.baseball.auth.AuthInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -34,6 +36,17 @@ public class WebMvcConfig implements WebMvcConfigurer {
                                 HttpMethod.OPTIONS.name())
                 .allowedOrigins("*")
                 .allowCredentials(true);
+    }
+
+    @Bean
+    public AuthInterceptor authInterceptor() {
+        return new AuthInterceptor();
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(authInterceptor())
+                .addPathPatterns("/games/**");
     }
 
 }

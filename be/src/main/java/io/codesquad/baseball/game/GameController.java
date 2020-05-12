@@ -4,6 +4,7 @@ import io.codesquad.baseball.game.atbat.pitch.BatterChoice;
 import io.codesquad.baseball.game.atbat.pitch.PitchOutcomeDetail;
 import io.codesquad.baseball.game.atbat.pitch.PitcherChoice;
 import io.codesquad.baseball.game.team.TeamSelectionResponse;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,23 +12,40 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
 public class GameController {
 
+    private final GameService gameService;
+    private final GameMatcher gameMatcher;
+
+    public GameController(GameService gameService, GameMatcher gameMatcher) {
+        this.gameService = gameService;
+        this.gameMatcher = gameMatcher;
+    }
+
     @GetMapping("/games")
     public ResponseEntity<List<GameSelectionDatum>> getGames() {
-        return null;
+        return ResponseEntity.ok(gameService.getGameSelectionData());
     }
 
     @PutMapping("/games/{gameId}/teams/{teamId}")
-    public ResponseEntity<TeamSelectionResponse> selectTeam(@PathVariable long gameId, @PathVariable long teamId) {
-        return null;
+    public ResponseEntity<TeamSelectionResponse> selectTeam(@PathVariable long gameId,
+                                                            @PathVariable long teamId,
+                                                            HttpSession session) {
+        boolean teamSelectionAccepted = gameService.selectTeam(gameId, teamId, session);
+        return ResponseEntity.status(teamSelectionAccepted ? HttpStatus.OK : HttpStatus.CONFLICT)
+                             .body(TeamSelectionResponse.builder()
+                                                        .teamSelectionAccepted(teamSelectionAccepted)
+                                                        .build());
     }
 
     @GetMapping("/games/{gameId}")
-    public ResponseEntity<GameScreenData> joinGameAsTeam(@PathVariable long gameId) {
+    public ResponseEntity<GameScreenData> joinGameAsTeam(@PathVariable long gameId,
+                                                         HttpSession session) throws InterruptedException {
+        gameMatcher.matchGame(gameId, session);
         return null;
     }
 
