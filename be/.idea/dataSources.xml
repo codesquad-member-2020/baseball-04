@@ -10,5 +10,11 @@
         <property name="serverTimezone" value="Asia/Seoul" />
       </driver-properties>
     </data-source>
+    <data-source source="LOCAL" name="RDS" uuid="ce478538-b96d-43fd-b8ae-71ec4274f22d">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://db-dev.cskoslbhhrzm.ap-northeast-2.rds.amazonaws.com:3306/baseball</jdbc-url>
+    </data-source>
   </component>
 </project>
