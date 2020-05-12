@@ -16,8 +16,8 @@ CREATE TABLE game
 
 CREATE TABLE team
 (
-    id       BIGINT AUTO_INCREMENT PRIMARY KEY,
-    name     VARCHAR(64),
+    id        BIGINT AUTO_INCREMENT PRIMARY KEY,
+    name      VARCHAR(64),
     image_url VARCHAR(256)
 );
 
