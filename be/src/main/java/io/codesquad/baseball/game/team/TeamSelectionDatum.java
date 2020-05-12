@@ -10,6 +10,7 @@ public class TeamSelectionDatum {
 
     long id;
     String name;
+    String imageURL;
     boolean isAvailable;
 
     @JsonGetter("isAvailable")

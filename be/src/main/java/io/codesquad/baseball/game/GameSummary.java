@@ -1,21 +1,15 @@
 package io.codesquad.baseball.game;
 
+import io.codesquad.baseball.game.team.TeamStat;
 import lombok.Builder;
 import lombok.Value;
-
-import java.util.List;
 
 @Value
 @Builder
 public class GameSummary {
 
-    String homeName;
-    String awayName;
-    int homeScore;
-    int awayScore;
-    boolean homeIsOffense;
-    boolean userIsHome;
-    List<Integer> homeInningScores;
-    List<Integer> awayInningScores;
+    ScoreBoardDetail scoreBoard;
+    TeamStat home;
+    TeamStat away;
 
 }
