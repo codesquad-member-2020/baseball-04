@@ -15,3 +15,11 @@ enum SegueIdentifer {
 enum NotificationUserInfoKey {
     static let gameId = "gameId"
 }
+
+enum CustomFont {
+    static let mainFont = "NeoDunggeunmo"
+}
+
+enum CustomColor {
+    static let BabyPink = "BabyPink"
+}
