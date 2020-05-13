@@ -7,20 +7,31 @@
 //
 
 import UIKit
+
 @IBDesignable
 class RectView: UIView {
-
-    @IBInspectable var borderColor: UIColor  = .black
     
+    @IBInspectable var colorToFill: UIColor  = .clear
+    @IBInspectable var borderColor: UIColor  = .darkGray
+    @IBInspectable var borderWidth: CGFloat  = 5
+    @IBInspectable var rotationAngle: CGFloat  = 45.0
+
     override func draw(_ rect: CGRect) {
         drawRect(rect: rect)
-        drawInsideRect(rect: rect)
+        drawBorder(rect: rect)
     }
     
-    func drawRect(rect: CGRect) {
+    private func drawRect(rect: CGRect) {
+        let path = UIBezierPath(rect: rect)
+        colorToFill.setFill()
+        path.fill()
+        rotate()
+    }
+    
+    private func drawBorder(rect: CGRect) {
         let path = UIBezierPath()
         borderColor.setStroke()
-        path.lineWidth = 9
+        path.lineWidth = borderWidth
         let startPoint = CGPoint(x: rect.minX, y: rect.minY)
         path.move(to: startPoint)
         path.addLine(to: CGPoint(x: rect.maxX, y: rect.minY))
@@ -28,18 +39,10 @@ class RectView: UIView {
         path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
         path.close()
         path.stroke()
+        rotate()
     }
     
-    func drawInsideRect(rect: CGRect) {
-        let path = UIBezierPath()
-        borderColor.setStroke()
-        path.lineWidth = 8
-        let startPoint = CGPoint(x: rect.maxX  / 3, y: rect.maxY / 3)
-        path.move(to: startPoint)
-        path.addLine(to: CGPoint(x: rect.maxX * 2/3, y: rect.maxY * 1 / 3))
-        path.addLine(to: CGPoint(x: rect.maxX * 2/3, y: rect.maxY * 2 / 3))
-        path.addLine(to: CGPoint(x: rect.maxX * 1/3, y: rect.maxY * 2 / 3))
-        path.close()
-        path.stroke()
+    private func rotate() {
+        self.transform = CGAffineTransform(rotationAngle: rotationAngle * CGFloat.pi / 180.0)
     }
 }

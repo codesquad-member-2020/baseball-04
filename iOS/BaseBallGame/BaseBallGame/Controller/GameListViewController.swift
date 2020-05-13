@@ -21,6 +21,8 @@ class GameListViewController: UIViewController {
         let dummy = GameInfo(gameNumber: 1, homeTeam: "h", awayTeam: "a")
         let game = gameListStackView.makeGame(data: dummy)
         let game2 = gameListStackView.makeGame(data: dummy)
+        game.gameStackCellDelegate = self
+        game2.gameStackCellDelegate = self
         gameListStackView.addGame(newGame: game)
         gameListStackView.addGame(newGame: game2)
         setupGameConstraint(game: game)
@@ -31,4 +33,16 @@ class GameListViewController: UIViewController {
         game.widthAnchor.constraint(equalTo: gameListStackView.widthAnchor, multiplier: 0.9).isActive = true
         game.heightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.1).isActive = true
     }
+    
+}
+extension GameListViewController: GameDelegate {
+    func didTapGameCell(gameId: String) {
+        
+        let matchingVC = self.storyboard?.instantiateViewController(withIdentifier: SegueIdentifer.matchingSegueIdentifer)
+        matchingVC?.modalPresentationStyle = .fullScreen
+        self.present(matchingVC!, animated: true, completion: nil)
+        
+    }
+    
+    
 }
