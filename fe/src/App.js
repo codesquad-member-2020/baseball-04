@@ -1,5 +1,4 @@
-import React from 'react';
-import axios from "axios";
+import React , {useState, createContext} from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -12,6 +11,7 @@ import Main from "./components/Main";
 import Game from "./components/Game/Game";
 import Popup from "./components/Popup";
 import backgroundImg from "./images/stadium.jpg";
+
 
 function App() {
   const StyleReset = createGlobalStyle`
@@ -43,23 +43,23 @@ function App() {
     top:50%; left:50%;
     transform: translate(-50%, -50%);
     border-radius : 20px;
-    /* margin : auto; */
-    /* margin-top : 40px; */
   `;
-  
+
+
+
 
   return (
-    <Router>
-      <Background>
-      <Wrap>
-        <StyleReset />
-        <Switch>
-        <Route exact path="/" component ={Main}/> 
-        <Route path="/game" component ={Game}/>
-        <Route path="/score_players" component = {Popup}/> 
-        </Switch>
-      </Wrap>
-      </Background>
+      <Router>
+        <Background>
+          <Wrap>
+            <StyleReset />
+            <Switch>
+              <Route exact path="/" component={Main} />
+              <Route path="/game/:gameNum" component={Game} />
+              <Route path="/score_players" component={Popup} />
+            </Switch>
+          </Wrap>
+        </Background>
       </Router>
   );
 }
