@@ -182,14 +182,232 @@
         <!--Socres-->
         <scene sceneID="buZ-Ju-0bc">
             <objects>
-                <viewController id="3YN-oD-QFq" sceneMemberID="viewController">
+                <viewController id="3YN-oD-QFq" customClass="ScoreDetailViewController" customModule="BaseBallGame" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jG3-LQ-hS7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="rjz-az-pI7">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uhQ-Oi-HeR">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="81.5"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RealBaseballBall" translatesAutoresizingMaskIntoConstraints="NO" id="mfH-mp-M9a">
+                                                <rect key="frame" x="62.5" y="36.5" width="40.5" height="40.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="mfH-mp-M9a" secondAttribute="height" multiplier="1:1" id="Gnt-3l-qIO"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uCj-gF-sAe">
+                                                <rect key="frame" x="140.5" y="38.5" width="30" height="32.5"/>
+                                                <fontDescription key="fontDescription" name="NeoDunggeunmo-Regular" family="NeoDunggeunmo" pointSize="30"/>
+                                                <color key="textColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSF-Vd-XgI">
+                                                <rect key="frame" x="190.5" y="38.5" width="33" height="32.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="MSF-Vd-XgI" secondAttribute="height" multiplier="1:1" id="Euc-Ph-SM0"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="NeoDunggeunmo-Regular" family="NeoDunggeunmo" pointSize="26"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IZE-b6-mJL">
+                                                <rect key="frame" x="232" y="38.5" width="32.5" height="32.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="IZE-b6-mJL" secondAttribute="height" multiplier="1:1" id="LID-f4-Cp2"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="NeoDunggeunmo-Regular" family="NeoDunggeunmo" pointSize="30"/>
+                                                <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RealBaseballBall" translatesAutoresizingMaskIntoConstraints="NO" id="gne-Lc-y2x">
+                                                <rect key="frame" x="311" y="36.5" width="40.5" height="40.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="gne-Lc-y2x" secondAttribute="height" multiplier="1:1" id="idP-d6-V6b"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" name="DarkDeepPurple"/>
+                                        <constraints>
+                                            <constraint firstItem="uCj-gF-sAe" firstAttribute="height" secondItem="uhQ-Oi-HeR" secondAttribute="height" multiplier="0.4" id="3d4-Wn-2Gk"/>
+                                            <constraint firstItem="MSF-Vd-XgI" firstAttribute="centerY" secondItem="uhQ-Oi-HeR" secondAttribute="centerY" multiplier="1.35" id="CfR-RZ-3mt"/>
+                                            <constraint firstItem="mfH-mp-M9a" firstAttribute="height" secondItem="uhQ-Oi-HeR" secondAttribute="height" multiplier="0.5" id="EUB-GG-Jvf"/>
+                                            <constraint firstItem="uCj-gF-sAe" firstAttribute="centerY" secondItem="uhQ-Oi-HeR" secondAttribute="centerY" multiplier="1.35" id="EqX-Zi-NL2"/>
+                                            <constraint firstItem="gne-Lc-y2x" firstAttribute="height" secondItem="uhQ-Oi-HeR" secondAttribute="height" multiplier="0.5" id="GAj-Og-9W0"/>
+                                            <constraint firstItem="IZE-b6-mJL" firstAttribute="height" secondItem="uhQ-Oi-HeR" secondAttribute="height" multiplier="0.4" id="Nlx-ot-Yja"/>
+                                            <constraint firstItem="gne-Lc-y2x" firstAttribute="centerY" secondItem="uhQ-Oi-HeR" secondAttribute="centerY" multiplier="1.4" id="O9G-LA-xzn"/>
+                                            <constraint firstItem="uCj-gF-sAe" firstAttribute="centerX" secondItem="uhQ-Oi-HeR" secondAttribute="centerX" multiplier="0.75" id="TPu-NC-3wa"/>
+                                            <constraint firstItem="MSF-Vd-XgI" firstAttribute="height" secondItem="uhQ-Oi-HeR" secondAttribute="height" multiplier="0.4" id="eL9-nW-mSE"/>
+                                            <constraint firstItem="IZE-b6-mJL" firstAttribute="centerY" secondItem="uhQ-Oi-HeR" secondAttribute="centerY" multiplier="1.35" id="f9a-OW-YSj"/>
+                                            <constraint firstItem="mfH-mp-M9a" firstAttribute="centerX" secondItem="uhQ-Oi-HeR" secondAttribute="centerX" multiplier="0.4" id="fHI-h2-XbZ"/>
+                                            <constraint firstItem="IZE-b6-mJL" firstAttribute="centerX" secondItem="uhQ-Oi-HeR" secondAttribute="centerX" multiplier="1.2" id="ifw-BL-Zyk"/>
+                                            <constraint firstItem="gne-Lc-y2x" firstAttribute="centerX" secondItem="uhQ-Oi-HeR" secondAttribute="centerX" multiplier="1.6" id="oK6-L2-zG4"/>
+                                            <constraint firstItem="mfH-mp-M9a" firstAttribute="centerY" secondItem="uhQ-Oi-HeR" secondAttribute="centerY" multiplier="1.4" id="ygX-rF-9X7"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O9O-73-2Ra">
+                                        <rect key="frame" x="0.0" y="81.5" width="414" height="134"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lsk-Xr-tXr" userLabel="TotalStackView" customClass="ScoreStackView" customModule="BaseBallGame" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="134"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="VwB-ti-RSI" userLabel="Team Name Stack View" customClass="ScoreStackView" customModule="BaseBallGame" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="83" height="134"/>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="fCk-a0-fZd" userLabel="ScoreBoard Vertical StackView">
+                                                        <rect key="frame" x="83" y="0.0" width="331" height="134"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ui4-A2-rrf" userLabel="Inning Stack View" customClass="ScoreStackView" customModule="BaseBallGame" customModuleProvider="target">
+                                                                <rect key="frame" x="140.5" y="0.0" width="50" height="44.5"/>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s3N-qw-1Gv" userLabel="HomeTeam Score Stack View" customClass="ScoreStackView" customModule="BaseBallGame" customModuleProvider="target">
+                                                                <rect key="frame" x="140.5" y="44.5" width="50" height="45"/>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jm7-vq-Dgg" userLabel="AwayTeam Score Stack View" customClass="ScoreStackView" customModule="BaseBallGame" customModuleProvider="target">
+                                                                <rect key="frame" x="140.5" y="89.5" width="50" height="44.5"/>
+                                                            </stackView>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="VwB-ti-RSI" firstAttribute="width" secondItem="Lsk-Xr-tXr" secondAttribute="width" multiplier="0.2" id="6Vk-dt-TH8"/>
+                                                    <constraint firstItem="fCk-a0-fZd" firstAttribute="width" secondItem="Lsk-Xr-tXr" secondAttribute="width" multiplier="0.8" id="CFh-Pf-jqv"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" name="DarkDeepPurple"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="Lsk-Xr-tXr" secondAttribute="trailing" id="F6G-JF-TC9"/>
+                                            <constraint firstItem="Lsk-Xr-tXr" firstAttribute="top" secondItem="O9O-73-2Ra" secondAttribute="top" id="aWA-89-Obg"/>
+                                            <constraint firstAttribute="bottom" secondItem="Lsk-Xr-tXr" secondAttribute="bottom" id="gpU-vj-rgh"/>
+                                            <constraint firstItem="Lsk-Xr-tXr" firstAttribute="leading" secondItem="O9O-73-2Ra" secondAttribute="leading" id="yrc-OI-ePg"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Bz-NG-uUi">
+                                        <rect key="frame" x="0.0" y="215.5" width="414" height="31.5"/>
+                                        <subviews>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="UYs-B0-Nw9">
+                                                <rect key="frame" x="41.5" y="0.0" width="331" height="32.5"/>
+                                                <segments>
+                                                    <segment title="HomeTeam"/>
+                                                    <segment title="AwayTeam"/>
+                                                </segments>
+                                            </segmentedControl>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="UYs-B0-Nw9" firstAttribute="centerY" secondItem="7Bz-NG-uUi" secondAttribute="centerY" id="HEk-0z-OdK"/>
+                                            <constraint firstItem="UYs-B0-Nw9" firstAttribute="height" secondItem="7Bz-NG-uUi" secondAttribute="height" id="VJj-WF-Zc6"/>
+                                            <constraint firstItem="UYs-B0-Nw9" firstAttribute="centerX" secondItem="7Bz-NG-uUi" secondAttribute="centerX" id="ZGm-ba-EXY"/>
+                                            <constraint firstItem="UYs-B0-Nw9" firstAttribute="width" secondItem="7Bz-NG-uUi" secondAttribute="width" multiplier="0.8" id="poE-8p-afc"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i19-FU-2Dp">
+                                        <rect key="frame" x="0.0" y="247" width="414" height="566"/>
+                                        <subviews>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CiM-oX-pq5">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="566"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <prototypes>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="dR4-YA-cs2">
+                                                        <rect key="frame" x="0.0" y="28" width="414" height="20.5"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dR4-YA-cs2" id="ftE-xx-IGD">
+                                                            <rect key="frame" x="0.0" y="0.0" width="414" height="20.5"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="TVa-EC-lmO">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="20.5"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="선수" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6H6-1G-uV7">
+                                                                            <rect key="frame" x="0.0" y="0.5" width="83" height="20"/>
+                                                                            <fontDescription key="fontDescription" name="NeoDunggeunmo-Regular" family="NeoDunggeunmo" pointSize="20"/>
+                                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="타석" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YQk-tD-S2q" userLabel="타석">
+                                                                            <rect key="frame" x="83" y="0.5" width="82.5" height="20"/>
+                                                                            <fontDescription key="fontDescription" name="NeoDunggeunmo-Regular" family="NeoDunggeunmo" pointSize="20"/>
+                                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="안타" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aMx-ca-0W5" userLabel="안타">
+                                                                            <rect key="frame" x="165.5" y="0.5" width="83" height="20"/>
+                                                                            <fontDescription key="fontDescription" name="NeoDunggeunmo-Regular" family="NeoDunggeunmo" pointSize="20"/>
+                                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아웃" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9jt-mf-Tux" userLabel="아웃">
+                                                                            <rect key="frame" x="248.5" y="0.5" width="82.5" height="20"/>
+                                                                            <fontDescription key="fontDescription" name="NeoDunggeunmo-Regular" family="NeoDunggeunmo" pointSize="20"/>
+                                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="평균" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wpM-Ew-rsT" userLabel="평균">
+                                                                            <rect key="frame" x="331" y="0.5" width="83" height="20"/>
+                                                                            <fontDescription key="fontDescription" name="NeoDunggeunmo-Regular" family="NeoDunggeunmo" pointSize="20"/>
+                                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                </stackView>
+                                                            </subviews>
+                                                            <color key="backgroundColor" name="ClassicBlue"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="bottom" secondItem="TVa-EC-lmO" secondAttribute="bottom" id="0lv-HQ-y2I"/>
+                                                                <constraint firstItem="TVa-EC-lmO" firstAttribute="top" secondItem="ftE-xx-IGD" secondAttribute="top" id="38v-P7-lmF"/>
+                                                                <constraint firstItem="TVa-EC-lmO" firstAttribute="leading" secondItem="ftE-xx-IGD" secondAttribute="leading" id="JMb-cR-F0A"/>
+                                                                <constraint firstAttribute="trailing" secondItem="TVa-EC-lmO" secondAttribute="trailing" id="ToS-7o-WIf"/>
+                                                            </constraints>
+                                                        </tableViewCellContentView>
+                                                    </tableViewCell>
+                                                </prototypes>
+                                            </tableView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="CiM-oX-pq5" firstAttribute="leading" secondItem="i19-FU-2Dp" secondAttribute="leading" id="ID1-S2-Pfj"/>
+                                            <constraint firstAttribute="bottom" secondItem="CiM-oX-pq5" secondAttribute="bottom" id="O90-4i-9a0"/>
+                                            <constraint firstItem="CiM-oX-pq5" firstAttribute="top" secondItem="i19-FU-2Dp" secondAttribute="top" id="kBI-KG-Lae"/>
+                                            <constraint firstAttribute="trailing" secondItem="CiM-oX-pq5" secondAttribute="trailing" id="uw5-bq-0oK"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" name="DarkDeepPurple"/>
+                                <constraints>
+                                    <constraint firstItem="uhQ-Oi-HeR" firstAttribute="height" secondItem="rjz-az-pI7" secondAttribute="height" multiplier="0.1" id="eZ4-C9-sgW"/>
+                                    <constraint firstItem="uhQ-Oi-HeR" firstAttribute="width" secondItem="rjz-az-pI7" secondAttribute="width" id="jfk-qd-6iN"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="O9O-73-2Ra" firstAttribute="centerX" secondItem="7wI-Fn-dMK" secondAttribute="centerX" id="2hD-HL-BGk"/>
+                            <constraint firstItem="O9O-73-2Ra" firstAttribute="height" secondItem="jG3-LQ-hS7" secondAttribute="height" multiplier="0.15" id="Hno-sN-LD4"/>
+                            <constraint firstItem="7wI-Fn-dMK" firstAttribute="bottom" secondItem="rjz-az-pI7" secondAttribute="bottom" id="K8F-zR-sIQ"/>
+                            <constraint firstItem="7Bz-NG-uUi" firstAttribute="width" secondItem="jG3-LQ-hS7" secondAttribute="width" id="NmN-kf-SWd"/>
+                            <constraint firstItem="7wI-Fn-dMK" firstAttribute="trailing" secondItem="rjz-az-pI7" secondAttribute="trailing" id="Rrh-0p-FkU"/>
+                            <constraint firstItem="rjz-az-pI7" firstAttribute="leading" secondItem="7wI-Fn-dMK" secondAttribute="leading" id="WXs-JT-9kZ"/>
+                            <constraint firstItem="7Bz-NG-uUi" firstAttribute="height" secondItem="jG3-LQ-hS7" secondAttribute="height" multiplier="0.035" id="aCe-2y-08x"/>
+                            <constraint firstItem="7Bz-NG-uUi" firstAttribute="centerX" secondItem="7wI-Fn-dMK" secondAttribute="centerX" id="bQk-Sw-bfY"/>
+                            <constraint firstItem="O9O-73-2Ra" firstAttribute="width" secondItem="jG3-LQ-hS7" secondAttribute="width" id="k7o-1E-7IA"/>
+                            <constraint firstItem="rjz-az-pI7" firstAttribute="top" secondItem="jG3-LQ-hS7" secondAttribute="top" id="o2f-NE-w2h"/>
+                            <constraint firstItem="MSF-Vd-XgI" firstAttribute="centerX" secondItem="7wI-Fn-dMK" secondAttribute="centerX" id="rL0-op-g6b"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="7wI-Fn-dMK"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Socres" image="baseballBall" selectedImage="baseballBall" id="hm5-DK-Vo9"/>
+                    <connections>
+                        <outlet property="AwayTeamScoreStackView" destination="jm7-vq-Dgg" id="bzQ-en-uTZ"/>
+                        <outlet property="homeTeamScoreStackView" destination="s3N-qw-1Gv" id="vjS-CM-Vv6"/>
+                        <outlet property="inningStackView" destination="Ui4-A2-rrf" id="Dwr-C1-Ruf"/>
+                        <outlet property="scoreDetailTableView" destination="CiM-oX-pq5" id="QDL-aj-f9a"/>
+                        <outlet property="teamNameStackView" destination="VwB-ti-RSI" id="q3w-Fa-epE"/>
+                        <outlet property="teamSegmentedControl" destination="UYs-B0-Nw9" id="3j5-Qr-Bea"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2aM-MG-xRB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -869,6 +1087,7 @@
     <resources>
         <image name="Hitter" width="480" height="480"/>
         <image name="PitchingPerson" width="480" height="480"/>
+        <image name="RealBaseballBall" width="173.33332824707031" height="173.33332824707031"/>
         <image name="baseballBall" width="30" height="30"/>
         <image name="baseballBet" width="33.333332061767578" height="33.333332061767578"/>
         <image name="baseballPlayer" width="30" height="30"/>
