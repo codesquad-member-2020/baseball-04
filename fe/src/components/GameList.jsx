@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components"
 import { withRouter } from 'react-router-dom';
-import {useStore} from "../Store";
 import axios from "axios";
 
 
 const GameList = (props) => {
 
-    const store = useStore();
 
     const GameListWrap = styled.div`
       padding: 20px 15px 20px 30px;
@@ -43,36 +41,49 @@ const GameList = (props) => {
         background : #1C1C1C;
         border-radius : 20px;
         border : solid 5px #a43657;
-        padding : 15px;
         box-sizing : border-box;
         margin-bottom : 20px;
     `;
     const Team = styled.div`
-      width: 180px;
+      width: 120px;
+      height : 40px;
+      line-height :40px;
       margin: 5px;
       font-family: "NeoDunggeunmo";
-      font-size: 35px;
+      font-size: 30px;
       color: whitesmoke;
       &:hover {
         color: #f5a9bc;
       }
     `;
     const GameNumber = styled.div`
-        font-family: 'HangeulNuri-Bold';
+        font-family: "NeoDunggeunmo";
         font-weight : bold;
+        font-size : 20px;
         color : #89B5FE;
+        margin-top : 10px;
     `;
     const TeamWrap = styled.div`
         display : flex;
         justify-content : center;
-        margin : 15px;
+        margin : 5px;
+        box-sizing : border-box;
+        
+    `;
+
+    const TeamImg = styled.img`
+        width : 50px;
+        border-radius : 50px;
+        margin : 0px 10px;
     `;
     const Versus = styled.div`
         font-family : 'NeoDunggeunmo';
         color : grey;
         font-weight : bold;
-        font-size : 35px;
+        font-size : 30px;
         margin : 5px;
+        height : 40px;
+      line-height :40px;
     `;
 
 
@@ -84,7 +95,6 @@ const GameList = (props) => {
 
     useEffect(() => {
         axios.get("http://52.78.203.80/api/mock/games").then((response) => {
-        //  store.actions.setTeamList(response.data);
         setTeamList(response.data);
         });
       }, []);
@@ -98,7 +108,7 @@ const GameList = (props) => {
               <GameTeamCard>
                 <GameNumber>GAME {index+1}</GameNumber>
                 <TeamWrap>
-                  <Team onClick={gameListClickHandler}>{list.away.name}</Team> <Versus>VS</Versus> <Team onClick={gameListClickHandler}>{list.home.name}</Team>
+                  <TeamImg src={list.home.imageURL}/><Team onClick={gameListClickHandler}>{list.home.name}</Team> <Versus>VS</Versus> <Team onClick={gameListClickHandler}>{list.away.name}</Team><TeamImg src={list.away.imageURL}/>
                 </TeamWrap>
               </GameTeamCard>
             );
