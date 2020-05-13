@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 import styled from "styled-components"
 import { withRouter } from 'react-router-dom';
+import {useStore} from "../Store";
+import axios from "axios";
+
 
 const GameList = (props) => {
+
+    const store = useStore();
 
     const GameListWrap = styled.div`
       padding : 20px 15px 20px 30px;
@@ -57,53 +62,30 @@ const GameList = (props) => {
     const gameListClickHandler = ()=>{
         props.history.push('/game');
     }
+    const [teamList , setTeamList] = useState([]);
+
+    useEffect(() => {
+        axios.get("http://52.78.203.80/api/mock/games").then((response) => {
+        //  store.actions.setTeamList(response.data);
+        setTeamList(response.data);
+        });
+      }, []);
+
     return (
       <>
-    <GameListWrap>
-     <GameTeamCard onClick={gameListClickHandler}>
-            <GameNumber>GAME 1</GameNumber>
-            <TeamWrap>
-                <Team>Captin</Team>VS<Team>Marvel</Team>
-            </TeamWrap>
-        </GameTeamCard>
-        <GameTeamCard>
-            <GameNumber>GAME 1</GameNumber>
-            <TeamWrap>
-                <Team>Captin</Team>VS<Team>Marvel</Team>
-            </TeamWrap>
-        </GameTeamCard>
-        <GameTeamCard>
-            <GameNumber>GAME 1</GameNumber>
-            <TeamWrap>
-                <Team>Captin</Team>VS<Team>Marvel</Team>
-            </TeamWrap>
-        </GameTeamCard>
-        <GameTeamCard>
-            <GameNumber>GAME 1</GameNumber>
-            <TeamWrap>
-                <Team>Captin</Team>VS<Team>Marvel</Team>
-            </TeamWrap>
-        </GameTeamCard>
-        <GameTeamCard>
-            <GameNumber>GAME 1</GameNumber>
-            <TeamWrap>
-                <Team>Captin</Team>VS<Team>Marvel</Team>
-            </TeamWrap>
-        </GameTeamCard>
-        <GameTeamCard>
-            <GameNumber>GAME 1</GameNumber>
-            <TeamWrap>
-                <Team>Captin</Team>VS<Team>Marvel</Team>
-            </TeamWrap>
-        </GameTeamCard>
-        <GameTeamCard>
-            <GameNumber>GAME 1</GameNumber>
-            <TeamWrap>
-                <Team>Captin</Team>VS<Team>Marvel</Team>
-            </TeamWrap>
-        </GameTeamCard>
-        
-      </GameListWrap>
+        <GameListWrap>
+          {teamList.map((list,index) => {
+            return (
+              <GameTeamCard onClick={gameListClickHandler}>
+                <GameNumber>GAME {index+1}</GameNumber>
+
+                <TeamWrap>
+                  <Team>{list.away.name}</Team> VS <Team>{list.home.name}</Team>
+                </TeamWrap>
+              </GameTeamCard>
+            );
+          })}
+        </GameListWrap>
       </>
     );
 };
