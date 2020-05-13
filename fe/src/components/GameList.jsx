@@ -10,18 +10,31 @@ const GameList = (props) => {
     const store = useStore();
 
     const GameListWrap = styled.div`
-      padding : 20px 15px 20px 30px;
+      padding: 20px 15px 20px 30px;
       height: 370px;
-      overflow-y : scroll;
-      background: rgba(255,255,255, 0.5);border-radius:15px;
-      &::-webkit-scrollbar { width: 15px;}
-      ::-webkit-scrollbar-track { background-color: #00ff0000; border-radius:20px;}
-      ::-webkit-scrollbar-thumb { background: #00ff0000 ;border-radius:5px; }
-      ::-webkit-scrollbar-button { display: none; }
+      overflow-y: scroll;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 15px;
+      &::-webkit-scrollbar {
+        width: 15px;
+      }
+      ::-webkit-scrollbar-track {
+        background-color: #00ff0000;
+        border-radius: 20px;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #00ff0000;
+        border-radius: 5px;
+      }
+      ::-webkit-scrollbar-button {
+        display: none;
+      }
       :hover {
-        ::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.5);border-radius:20px; }
-    };
-
+        ::-webkit-scrollbar-thumb {
+          background: rgba(0, 0, 0, 0.5);
+          border-radius: 20px;
+        }
+      }
     `;
     const GameTeamCard = styled.div`
         display : flex;
@@ -35,34 +48,39 @@ const GameList = (props) => {
         margin-bottom : 20px;
     `;
     const Team = styled.div`
-        font-family : 'NeoDunggeunmo';
-        font-size : 35px;
-        color : whitesmoke;
-        &:hover {
-            color : #F5A9BC;
-        };
+      width: 180px;
+      margin: 5px;
+      font-family: "NeoDunggeunmo";
+      font-size: 35px;
+      color: whitesmoke;
+      &:hover {
+        color: #f5a9bc;
+      }
     `;
     const GameNumber = styled.div`
         font-family: 'HangeulNuri-Bold';
         font-weight : bold;
         color : #89B5FE;
     `;
-
-
     const TeamWrap = styled.div`
-        font-family : 'NeoDunggeunmo';
         display : flex;
-        justify-content : space-around;
-        color : grey;
-        font-weight : bold;
-        font-size : 30px;
+        justify-content : center;
         margin : 15px;
     `;
+    const Versus = styled.div`
+        font-family : 'NeoDunggeunmo';
+        color : grey;
+        font-weight : bold;
+        font-size : 35px;
+        margin : 5px;
+    `;
+
 
     const gameListClickHandler = ()=>{
         props.history.push('/game');
     }
     const [teamList , setTeamList] = useState([]);
+
 
     useEffect(() => {
         axios.get("http://52.78.203.80/api/mock/games").then((response) => {
@@ -71,16 +89,16 @@ const GameList = (props) => {
         });
       }, []);
 
+
     return (
       <>
         <GameListWrap>
           {teamList.map((list,index) => {
             return (
-              <GameTeamCard onClick={gameListClickHandler}>
+              <GameTeamCard>
                 <GameNumber>GAME {index+1}</GameNumber>
-
                 <TeamWrap>
-                  <Team>{list.away.name}</Team> VS <Team>{list.home.name}</Team>
+                  <Team onClick={gameListClickHandler}>{list.away.name}</Team> <Versus>VS</Versus> <Team onClick={gameListClickHandler}>{list.home.name}</Team>
                 </TeamWrap>
               </GameTeamCard>
             );
