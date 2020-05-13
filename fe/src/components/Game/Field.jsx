@@ -3,10 +3,7 @@ import styled, { css, keyframes } from "styled-components";
 import filedImg from "../../images/diamond2.png";
 import PitchBtn from "./PitchBtn";
 
-
-const Field = () => {
-  const [batterPosition, setBatterPosition] = useState(0);
-
+const Field = ({ data }) => {
   const Wrap = styled.div`
     width: 1000px;
     height: 600px;
@@ -52,8 +49,6 @@ const Field = () => {
     margin-top: 10px;
     border-radius: 10px;
   `;
-
-  
 
   //초기 0, 이동 270
   const move1 = keyframes`
@@ -175,15 +170,49 @@ const Field = () => {
     }}
   `;
 
-  const strikeBtnClickHandler = () => {
-    setBatterPosition(batterPosition + 1);
+  // const [batterPosition, setBatterPosition] = useState(0);
+
+  const [inning, setInning] = useState();
+  const [ballCount, setBallCount] = useState();
+  const [strikeCount, setStrikeCount] = useState();
+  const [outCount, setOutCount] = useState();
+  const [firstBase, setFirstBase] = useState();
+  const [secondBase, setSecondBase] = useState();
+  const [thirdBase, setThirdBase] = useState();
+
+  useEffect(() => {
+    setInning(setInningMsg(data));
+    setBallCount(makeCircle(data.ballCount));
+    setStrikeCount(makeCircle(data.strikeCount));
+    setOutCount(makeCircle(data.outCount));
+  }, []);
+
+  const setInningMsg = (data) => {
+    let msg = '';
+    const isTop = data.inningIsTop === true ? "초" : "말";
+    const offense = data.userIsOffense === true ? "수비" : "공격";
+    msg = `${data.inning}회${isTop} ${offense}`;
+    if(data.inningIsTop==null || data.userIsOffense ==null ) msg='';
+    return msg ;
   };
 
-  const runningAnimation = () => {
+  const makeCircle = (num) => {
+    let countCircle = "";
+    for (let i = 0; i < num; i++) {
+      countCircle += "●";
+    }
+    return countCircle;
+  };
+
+  const strikeBtnClickHandler = () => {
+    // setBatterPosition(batterPosition + 1);
+  };
+
+  const setBatter = () => {
     const img =
       "https://media2.giphy.com/media/YrCNxwsXSVLlw0TY1R/giphy.gif?cid=ecf05e47699788e3a0754d3861099fa54128c0c53f4695a0&rid=giphy.gif";
 
-    if (batterPosition === 1) {
+    if (data.runnerIsOnSecondBase === false) {
       return (
         <>
           <Route1>
@@ -192,19 +221,7 @@ const Field = () => {
         </>
       );
     }
-    if (batterPosition === 2) {
-      return (
-        <>
-          <Route1>
-            <AniImg1 active src={img} />
-          </Route1>
-          <Route2>
-            <AniImg2 active src={img} />
-          </Route2>
-        </>
-      );
-    }
-    if (batterPosition === 3) {
+    if (data.runnerIsOnThirdBase === false) {
       return (
         <>
           <Route1>
@@ -213,13 +230,10 @@ const Field = () => {
           <Route2>
             <AniImg2 active src={img} />
           </Route2>
-          <Route3>
-            <AniImg3 active src={img} />
-          </Route3>
         </>
       );
     }
-    if (4 <= batterPosition) {
+    if (data.runnerIsOnThirdBase === true) {
       return (
         <>
           <Route1>
@@ -231,33 +245,49 @@ const Field = () => {
           <Route3>
             <AniImg3 active src={img} />
           </Route3>
-          <Route4>
-            <AniImg4 active src={img} />
-          </Route4>
         </>
       );
     }
+    // if (4 <= batterPosition) {
+    //   return (
+    //     <>
+    //       <Route1>
+    //         <AniImg1 active src={img} />
+    //       </Route1>
+    //       <Route2>
+    //         <AniImg2 active src={img} />
+    //       </Route2>
+    //       <Route3>
+    //         <AniImg3 active src={img} />
+    //       </Route3>
+    //       <Route4>
+    //         <AniImg4 active src={img} />
+    //       </Route4>
+    //     </>
+    //   );
+    // }
   };
 
   return (
     <Wrap>
       <SBOWrap>
         <SBO>
-          S <Count style={{ color: "yellow" }}>●●</Count>
+          S <Count style={{ color: "yellow" }}>{strikeCount}</Count>
         </SBO>
         <SBO>
-          B<Count style={{ color: "green" }}>●●●</Count>
+          B<Count style={{ color: "green" }}>{ballCount}</Count>
         </SBO>
         <SBO>
-          O<Count style={{ color: "red" }}>●●</Count>
+          O<Count style={{ color: "red" }}>{outCount}</Count>
         </SBO>
       </SBOWrap>
-      {runningAnimation()}
-        <PitchBtn click={strikeBtnClickHandler}/>
+      {setBatter()}
+      <PitchBtn click={strikeBtnClickHandler} />
       <FieldImg src={filedImg} />
-      <GameInfo>2회초 수비</GameInfo>
+      <GameInfo>{inning}</GameInfo>
     </Wrap>
   );
 };
 
 export default Field;
+
