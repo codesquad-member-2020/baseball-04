@@ -14,7 +14,8 @@ public class GameViewer {
     }
 
     public ScoreBoardSummary getScoreBoardSummary(long gameId, HttpSession session) {
-        return null;
+        boolean isHome = (boolean) session.getAttribute("isHome");
+        return gameDao.findScoreBoardSummary(gameId, isHome);
     }
 
 }

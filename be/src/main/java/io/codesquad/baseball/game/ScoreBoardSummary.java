@@ -11,8 +11,8 @@ public class ScoreBoardSummary {
     String homeImageUrl;
     String awayName;
     String awayImageUrl;
-    boolean userIsHome;
     int homeScore;
     int awayScore;
+    boolean userIsHome;
 
 }
