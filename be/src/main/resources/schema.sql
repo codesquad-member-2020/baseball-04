@@ -4,7 +4,7 @@ DROP TABLE IF EXISTS team_stat;
 DROP TABLE IF EXISTS half_inning;
 DROP TABLE IF EXISTS at_bat;
 DROP TABLE IF EXISTS pitch;
-DROP TABLE IF EXISTS batter;
+DROP TABLE IF EXISTS player;
 DROP TABLE IF EXISTS batter_stat;
 DROP TABLE IF EXISTS pitcher;
 DROP TABLE IF EXISTS pitcher_stat;
@@ -34,64 +34,59 @@ CREATE TABLE half_inning
 (
     id          BIGINT AUTO_INCREMENT PRIMARY KEY,
     team_stat   BIGINT REFERENCES team_stat (id),
-    inning      INT, -- index
-    score       INT,
-    out_count   INT,
-    first_base  TINYINT(1),
-    second_base TINYINT(1),
-    third_base  TINYINT(1)
+    inning      INT,        -- also functions as index
+    is_top      TINYINT(1),
+    score       INT,        -- changes
+    out_count   INT,        -- changes
+    first_base  TINYINT(1), -- changes
+    second_base TINYINT(1), -- changes
+    third_base  TINYINT(1), -- changes
+    is_finished TINYINT(1)  -- changes
 );
 
 CREATE TABLE at_bat
 (
-    id              BIGINT AUTO_INCREMENT PRIMARY KEY,
-    half_inning     BIGINT REFERENCES half_inning (id),
-    half_inning_key INT,
-    batter          BIGINT REFERENCES batter (id),
-    hit             TINYINT(1),
-    `out`           TINYINT(1)
+    id          BIGINT AUTO_INCREMENT PRIMARY KEY,
+    half_inning BIGINT REFERENCES half_inning (id),
+    batter_stat BIGINT REFERENCES batter_stat (id) -- find batterName and battingOrder
+    -- compute strike and ball counts from pitch
 );
 
 CREATE TABLE pitch
 (
-    id     BIGINT AUTO_INCREMENT PRIMARY KEY,
-    at_bat BIGINT REFERENCES at_bat (id),
-    count  INT, -- index
-    strike TINYINT(1),
-    ball   TINYINT(1),
-    hit    TINYINT(1),
-    `out`  TINYINT(1)
+    id                   BIGINT AUTO_INCREMENT PRIMARY KEY,
+    at_bat               BIGINT REFERENCES at_bat (id),
+    count                INT, -- also functions as index
+    pitcher_stat         BIGINT REFERENCES pitcher_stat (id),
+    pitcher_chose_strike TINYINT(1),
+    pitcher_threw_strike TINYINT(1),
+    batter_chose_swing   TINYINT(1),
+    is_strike            TINYINT(1),
+    is_ball              TINYINT(1),
+    is_hit               TINYINT(1),
+    is_out               TINYINT(1)
 );
 
-CREATE TABLE batter
+CREATE TABLE player
 (
-    id              BIGINT AUTO_INCREMENT PRIMARY KEY,
-    team            BIGINT REFERENCES team (id),
-    name            VARCHAR(64),
-    batting_average DECIMAL
+    id                BIGINT AUTO_INCREMENT PRIMARY KEY,
+    team              BIGINT REFERENCES team (id),
+    name              VARCHAR(64),
+    batting_average   DECIMAL,
+    pitching_accuracy DECIMAL -- null if not a pitcher
 );
 
 CREATE TABLE batter_stat
 (
     id            BIGINT AUTO_INCREMENT PRIMARY KEY,
-    batter        BIGINT REFERENCES batter (id),
-    game          BIGINT REFERENCES game (id),
-    batting_order INT,
-    at_bat        INT,
-    hit           INT -- compute out count and game average with at_bat and hit
-);
-
-CREATE TABLE pitcher
-(
-    id       BIGINT AUTO_INCREMENT PRIMARY KEY,
-    team     BIGINT REFERENCES team (id),
-    name     VARCHAR(64),
-    accuracy DECIMAL
+    team_stat     BIGINT REFERENCES team_stat (id),
+    player        BIGINT REFERENCES player (id),
+    batting_order INT -- also functions as index
 );
 
 CREATE TABLE pitcher_stat
 (
-    id      BIGINT AUTO_INCREMENT PRIMARY KEY,
-    pitcher BIGINT REFERENCES pitcher (id),
-    game    BIGINT REFERENCES game (id)
+    id        BIGINT AUTO_INCREMENT PRIMARY KEY,
+    player    BIGINT REFERENCES player (id),
+    team_stat BIGINT REFERENCES team_stat (id)
 )
