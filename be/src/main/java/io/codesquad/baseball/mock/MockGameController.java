@@ -41,15 +41,13 @@ public class MockGameController {
                                     .home(TeamSelectionDatum.builder()
                                                             .id(1)
                                                             .name("JK")
-                                                            .imageURL(
-                                                            "https://ca.slack-edge.com/T74H5245A-U75J67NMV-0b94bf9f88a1-512")
+                                                            .imageURL("https://ca.slack-edge.com/T74H5245A-U75J67NMV-0b94bf9f88a1-512")
                                                             .isAvailable(true)
                                                             .build())
                                     .away(TeamSelectionDatum.builder()
                                                             .id(2)
                                                             .name("Crong")
-                                                            .imageURL(
-                                                            "https://ca.slack-edge.com/T74H5245A-U74HAJ05S-b82cb3c93123-512")
+                                                            .imageURL("https://ca.slack-edge.com/T74H5245A-U74HAJ05S-b82cb3c93123-512")
                                                             .isAvailable(false)
                                                             .build())
                                     .build());
@@ -153,7 +151,9 @@ public class MockGameController {
         GameScreenData gameScreenData = GameScreenData.builder()
                                                       .scoreBoard(ScoreBoardSummary.builder()
                                                                                    .homeName("Captain")
+                                                                                   .homeImageUrl("https://ca.slack-edge.com/T74H5245A-U75J67NMV-0b94bf9f88a1-512")
                                                                                    .awayName("Marvel")
+                                                                                   .awayImageUrl("https://ca.slack-edge.com/T74H5245A-U74HAJ05S-b82cb3c93123-512")
                                                                                    .homeScore(1)
                                                                                    .awayScore(5)
                                                                                    .userIsHome(true)
@@ -186,7 +186,9 @@ public class MockGameController {
         GameScreenData gameScreenData = GameScreenData.builder()
                                                       .scoreBoard(ScoreBoardSummary.builder()
                                                                                    .homeName("Captain")
+                                                                                   .homeImageUrl("https://ca.slack-edge.com/T74H5245A-U75J67NMV-0b94bf9f88a1-512")
                                                                                    .awayName("Marvel")
+                                                                                   .awayImageUrl("https://ca.slack-edge.com/T74H5245A-U74HAJ05S-b82cb3c93123-512")
                                                                                    .homeScore(1)
                                                                                    .awayScore(6)
                                                                                    .userIsHome(true)
@@ -224,9 +226,12 @@ public class MockGameController {
                                                                                           .outcomeIsHit(true)
                                                                                           .build())
                                                                   .baserunning(Baserunning.builder()
-                                                                                          .runnerAdvancesToFirstBase(true)
-                                                                                          .runnerAdvancesToSecondBase(true)
-                                                                                          .runnerAdvancesToThirdBase(true)
+                                                                                          .runnerAdvancesToFirstBase(
+                                                                                          true)
+                                                                                          .runnerAdvancesToSecondBase(
+                                                                                          true)
+                                                                                          .runnerAdvancesToThirdBase(
+                                                                                          true)
                                                                                           .runnerAdvancesToHomeBase(true)
                                                                                           .build())
                                                                   .gameScreenData(gameScreenData)

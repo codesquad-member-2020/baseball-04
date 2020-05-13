@@ -8,7 +8,9 @@ import lombok.Value;
 public class ScoreBoardSummary {
 
     String homeName;
+    String homeImageUrl;
     String awayName;
+    String awayImageUrl;
     boolean userIsHome;
     int homeScore;
     int awayScore;
