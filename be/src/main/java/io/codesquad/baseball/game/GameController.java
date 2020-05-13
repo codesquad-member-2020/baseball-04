@@ -18,24 +18,26 @@ import java.util.List;
 @RestController
 public class GameController {
 
-    private final GameService gameService;
+    private final GameSelector gameSelector;
     private final GameMatcher gameMatcher;
+    private final GameViewer gameViewer;
 
-    public GameController(GameService gameService, GameMatcher gameMatcher) {
-        this.gameService = gameService;
+    public GameController(GameSelector gameSelector, GameMatcher gameMatcher, GameViewer gameViewer) {
+        this.gameSelector = gameSelector;
         this.gameMatcher = gameMatcher;
+        this.gameViewer = gameViewer;
     }
 
     @GetMapping("/games")
     public ResponseEntity<List<GameSelectionDatum>> getGames() {
-        return ResponseEntity.ok(gameService.getGameSelectionData());
+        return ResponseEntity.ok(gameSelector.getGameSelectionData());
     }
 
     @PutMapping("/games/{gameId}/teams/{teamId}")
     public ResponseEntity<TeamSelectionResponse> selectTeam(@PathVariable long gameId,
                                                             @PathVariable long teamId,
                                                             HttpSession session) {
-        boolean teamSelectionAccepted = gameService.selectTeam(gameId, teamId, session);
+        boolean teamSelectionAccepted = gameSelector.selectTeam(gameId, teamId, session);
         return ResponseEntity.status(teamSelectionAccepted ? HttpStatus.OK : HttpStatus.CONFLICT)
                              .body(TeamSelectionResponse.builder()
                                                         .teamSelectionAccepted(teamSelectionAccepted)

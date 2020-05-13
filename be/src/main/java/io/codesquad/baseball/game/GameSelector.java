@@ -8,11 +8,11 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class GameService {
+public class GameSelector {
 
     private final GameDao gameDao;
 
-    public GameService(GameDao gameDao) {
+    public GameSelector(GameDao gameDao) {
         this.gameDao = gameDao;
     }
 
@@ -27,6 +27,7 @@ public class GameService {
         if (teamIsAvailable) {
             gameDao.updateTeamAsUnavailable(gameId, teamId);
             session.setAttribute("gameId", gameId);
+            session.setAttribute("teamId", teamId);
             session.setAttribute("isHome", teamData.get("isHome"));
         }
         return teamIsAvailable;
