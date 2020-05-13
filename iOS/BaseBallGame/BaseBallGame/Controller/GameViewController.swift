@@ -64,10 +64,3 @@ class GameViewController: UIViewController {
     }
     
 }
-enum PlayButtonCase: String, CustomStringConvertible {
-    var description: String {
-        return self.rawValue
-    }
-    
-    case Pitch = "Pitch", Hitting = "Hitting"
-}
