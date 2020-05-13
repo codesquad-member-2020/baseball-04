@@ -11,7 +11,9 @@ DROP TABLE IF EXISTS pitcher_stat;
 
 CREATE TABLE game
 (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY
+    id     BIGINT AUTO_INCREMENT PRIMARY KEY,
+    inning INT,
+    is_top TINYINT(1)
 );
 
 CREATE TABLE team
@@ -23,11 +25,13 @@ CREATE TABLE team
 
 CREATE TABLE team_stat
 (
-    id           BIGINT AUTO_INCREMENT PRIMARY KEY,
-    game         BIGINT REFERENCES game (id),
-    team         BIGINT REFERENCES team (id),
-    is_home      TINYINT(1),
-    is_available TINYINT(1)
+    id            BIGINT AUTO_INCREMENT PRIMARY KEY,
+    game          BIGINT REFERENCES game (id),
+    team          BIGINT REFERENCES team (id),
+    is_home       TINYINT(1),
+    is_available  TINYINT(1),
+    batting_order INT,
+    pitcher       BIGINT REFERENCES player (id)
 );
 
 CREATE TABLE half_inning
@@ -40,15 +44,15 @@ CREATE TABLE half_inning
     out_count   INT,        -- changes
     first_base  TINYINT(1), -- changes
     second_base TINYINT(1), -- changes
-    third_base  TINYINT(1), -- changes
-    is_finished TINYINT(1)  -- changes
+    third_base  TINYINT(1)  -- changes
 );
 
 CREATE TABLE at_bat
 (
     id          BIGINT AUTO_INCREMENT PRIMARY KEY,
     half_inning BIGINT REFERENCES half_inning (id),
-    batter_stat BIGINT REFERENCES batter_stat (id) -- find batterName and battingOrder
+    batter_stat BIGINT REFERENCES batter_stat (id), -- find batterName and battingOrder
+    is_hit      TINYINT(1)                          -- if false, then out
     -- compute strike and ball counts from pitch
 );
 
@@ -79,14 +83,14 @@ CREATE TABLE player
 CREATE TABLE batter_stat
 (
     id            BIGINT AUTO_INCREMENT PRIMARY KEY,
+    batter        BIGINT REFERENCES player (id),
     team_stat     BIGINT REFERENCES team_stat (id),
-    player        BIGINT REFERENCES player (id),
     batting_order INT -- also functions as index
 );
 
 CREATE TABLE pitcher_stat
 (
     id        BIGINT AUTO_INCREMENT PRIMARY KEY,
-    player    BIGINT REFERENCES player (id),
+    pitcher   BIGINT REFERENCES player (id),
     team_stat BIGINT REFERENCES team_stat (id)
 )

@@ -2,6 +2,9 @@ package io.codesquad.baseball.game;
 
 import io.codesquad.baseball.exception.InvalidTeamSelectionException;
 import io.codesquad.baseball.game.ScoreBoardSummary.ScoreBoardSummaryBuilder;
+import io.codesquad.baseball.game.atbat.CurrentAtBat;
+import io.codesquad.baseball.game.player.BatterStatSummary;
+import io.codesquad.baseball.game.player.PitcherStatSummary;
 import io.codesquad.baseball.game.team.TeamDao;
 import io.codesquad.baseball.game.team.TeamSelectionDatum;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -80,10 +83,12 @@ public class GameDao {
     }
 
     public ScoreBoardSummary findScoreBoardSummary(long gameId, boolean isHome) {
-        String homeScoreSql = "SELECT SUM(hi.score) FROM team_stat ts " +
+        String homeScoreSql = "SELECT SUM(hi.score)" +
+                              "FROM team_stat ts " +
                               "JOIN half_inning hi ON ts.id = hi.team_stat " +
                               "WHERE ts.is_home = TRUE AND ts.game = :g_id";
-        String awayScoreSql = "SELECT SUM(hi.score) FROM team_stat ts " +
+        String awayScoreSql = "SELECT SUM(hi.score) " +
+                              "FROM team_stat ts " +
                               "JOIN half_inning hi ON ts.id = hi.team_stat " +
                               "WHERE ts.is_home = FALSE AND ts.game = :g_id";
         String sql = "SELECT ts.is_home, t.name, t.image_url " +
@@ -109,6 +114,68 @@ public class GameDao {
                 }
             }
             return builder.build();
+        });
+    }
+
+    public CurrentAtBat findCurrentAtBat(long gameId) {
+        PitcherStatSummary pitcherStatSummary = getPitcherStatSummary(gameId);
+        BatterStatSummary batterStatSummary = getBatterStatSummary(gameId);
+        return CurrentAtBat.builder()
+                           .pitcherName(pitcherStatSummary.getPitcherName())
+                           .pitchCount(pitcherStatSummary.getPitchCount())
+                           .batterName(batterStatSummary.getBatterName())
+                           .atBatCount(batterStatSummary.getAtBatCount())
+                           .hitCount(batterStatSummary.getHitCount())
+                           .build();
+    }
+
+    private PitcherStatSummary getPitcherStatSummary(long gameId) {
+        String pitchCountSql = "SELECT COUNT(p.id) " +
+                               "FROM pitch p " +
+                               "JOIN pitcher_stat ps ON p.pitcher_stat = ps.id " +
+                               "JOIN team_stat ts ON ps.pitcher = ts.pitcher " +
+                               "WHERE ts.game = :g_id";
+        String sql = "SELECT p.name AS name" +
+                     ", (" + pitchCountSql + ") AS count " +
+                     "FROM player p " +
+                     "JOIN pitcher_stat ps ON ps.pitcher = p.id " +
+                     "JOIN team_stat ts ON ps.team_stat = ts.id " +
+                     "JOIN game g ON ts.game = g.id AND ts.is_home = g.is_top " +
+                     "WHERE g.id = :g_id";
+        SqlParameterSource sqlParameterSource = new MapSqlParameterSource()
+                                                .addValue("g_id", gameId);
+        return namedParameterJdbcTemplate.queryForObject(sql, sqlParameterSource, (rs, rowNum) -> {
+            return PitcherStatSummary.builder()
+                                     .pitcherName(rs.getString("name"))
+                                     .pitchCount(rs.getInt("count"))
+                                     .build();
+        });
+    }
+
+    private BatterStatSummary getBatterStatSummary(long gameId) {
+        String countAtBatSql = "SELECT COUNT(ab.id) FROM at_bat ab " +
+                               "JOIN batter_stat bs ON ab.batter_stat = bs.id " +
+                               "JOIN team_stat ts ON ts.id = bs.team_stat AND bs.batting_order = ts.batting_order " +
+                               "WHERE ts.game = :g_id AND ab.is_hit IS NOT NULL";
+        String countHitSql = "SELECT COUNT(ab.is_hit) FROM at_bat ab " +
+                             "JOIN batter_stat bs ON ab.batter_stat = bs.id " +
+                             "JOIN team_stat ts ON ts.id = bs.team_stat AND bs.batting_order = ts.batting_order " +
+                             "WHERE ts.game = :g_id";
+        String sql = "SELECT p.name " +
+                     ", (" + countAtBatSql + ") at_bat_count " +
+                     ", (" + countHitSql + ") hit_count " +
+                     "FROM player p " +
+                     "JOIN batter_stat bs ON bs.batter = p.id " +
+                     "JOIN team_stat ts ON ts.id = bs.team_stat AND ts.batting_order = bs.batting_order " +
+                     "WHERE ts.game = :g_id";
+        SqlParameterSource sqlParameterSource = new MapSqlParameterSource()
+                                                .addValue("g_id", gameId);
+        return namedParameterJdbcTemplate.queryForObject(sql, sqlParameterSource, (rs, rowNum) -> {
+            return BatterStatSummary.builder()
+                                    .batterName(rs.getString("p.name"))
+                                    .atBatCount(rs.getInt("at_bat_count"))
+                                    .hitCount(rs.getInt("hit_count"))
+                                    .build();
         });
     }
 
