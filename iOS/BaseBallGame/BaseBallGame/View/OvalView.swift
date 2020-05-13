@@ -28,5 +28,4 @@ class OvalView: UIView {
         path.fill()
         path.stroke()
     }
-    
 }

@@ -23,7 +23,6 @@ class RoundRectView: UIView {
     }
     
     private func drawRoundRect(rect: CGRect) {
-        
         let path = UIBezierPath(roundedRect: self.bounds, cornerRadius: cornerRadiusAngle)
         path.lineWidth = borderWidth
         colorToFill.setFill()
