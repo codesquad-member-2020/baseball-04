@@ -2,6 +2,7 @@ package io.codesquad.baseball.system;
 
 import io.codesquad.baseball.auth.AuthInterceptor;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -15,6 +16,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
 @EnableSwagger2
+@ComponentScan("com.codesquad.oauthgithublibrary.oauth.github")
 public class WebMvcConfig implements WebMvcConfigurer {
 
     @Bean
