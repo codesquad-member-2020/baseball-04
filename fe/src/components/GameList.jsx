@@ -2,15 +2,15 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
 
-const GameList = (props) => {
-  const gameListClickHandler = (e) => {
-    props.history.push(`/game/${e.target.dataset.gamenum}`);
-  };
+const GameList = ({history, click}) => {
+
+  
   const [teamList, setTeamList] = useState([]);
 
   useEffect(() => {
     axios.get("http://52.78.203.80/api/mock/games").then((response) => {
       setTeamList(response.data);
+      console.log(response.data);
     });
   }, []);
 
@@ -23,11 +23,11 @@ const GameList = (props) => {
               <GameNumber>GAME {index + 1}</GameNumber>
               <TeamWrap>
                 <TeamImg src={list.home.imageURL} />
-                <Team data-gamenum={index + 1} onClick={gameListClickHandler}>
+                <Team data-gamenum={index + 1} data-teamid={list.home.id} data-team="home" onClick={click}>
                   {list.home.name}
                 </Team>{" "}
                 <Versus>VS</Versus>{" "}
-                <Team data-gamenum={index + 1} onClick={gameListClickHandler}>
+                <Team data-gamenum={index + 1} data-teamid={list.away.id} data-team="away" onClick={click}>
                   {list.away.name}
                 </Team>
                 <TeamImg src={list.away.imageURL} />

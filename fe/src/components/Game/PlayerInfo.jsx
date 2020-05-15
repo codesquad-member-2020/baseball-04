@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import infoBackImg from "../../images/전광판.png";
 
+
 const PlayerInfo = ({data}) => {
   const [pitcherName, setPitcherName] = useState();
   const [pitcherCount, setPitcherCount] = useState();
@@ -16,6 +17,7 @@ const PlayerInfo = ({data}) => {
   }, []);
 
   return (
+    <>
     <Wrap>
       <PlayerWrap>
         <Position>[ 투수 ]</Position>
@@ -32,6 +34,7 @@ const PlayerInfo = ({data}) => {
         </InfoWrap>
       </PlayerWrap>
     </Wrap>
+    </>
   );
 };
 
@@ -45,7 +48,7 @@ const Wrap = styled.div`
   margin: 10px 10px 10px 30px;
   padding: 20px;
   border-radius: 10px;
-  border: solid 8px #a33756;
+  border: solid 8px #C1BEEF;
   background-image: url(${infoBackImg});
 `;
 

@@ -1,15 +1,14 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
-import { cloneNode } from "@babel/types";
+import { createBrowserHistory } from "history";
 
-const Popup = ({ history }) => {
-  const closeBtnHandler = () => {
-    history.goBack();
-  };
+const Popup = ({click}) => {
+
+  const history = createBrowserHistory();
 
   return (
     <Wrap>
-      <CloseBtn onClick={closeBtnHandler}>X</CloseBtn>
+      <CloseBtn onClick={click}>X</CloseBtn>
       <ScoreWrap>
         <RoundWrap>
           <Playing></Playing>
@@ -102,7 +101,7 @@ const Popup = ({ history }) => {
             <Values>1.000</Values>
           </PlayerWrap>
           <PlayerWrap>
-            <PlayerName>울라프</PlayerName>
+            <PlayerName>올라프</PlayerName>
             <Values>1</Values>
             <Values>1</Values>
             <Values>0</Values>
@@ -247,11 +246,16 @@ const Wrap = styled.div`
   display: flex;
   flex-wrap: wrap;
   background: #241d4f;
-  padding: 10px;
+  padding: 5px;
   justify-content: center;
-  box-sizing: border-box;
+  box-sizing: content-box;
   font-family: "NeoDunggeunmo";
   color: white;
+  padding-top : 25px;
+  position : absolute;
+  top : 0;
+  left : 0;
+  z-index : -10;
 `;
 
 const ScoreWrap = styled.div`
@@ -264,7 +268,9 @@ const ScoreWrap = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: rgba(0, 0, 0, 0.3);
+  /* background: rgba(0, 0, 0, 0.3); */
+  background: #241d4f;
+  
 `;
 
 const CloseBtn = styled.button`
@@ -274,6 +280,7 @@ const CloseBtn = styled.button`
   color: white;
   font-size: 40px;
   position: absolute;
+  margin-top : 20px;
   top: 0;
   right: 70px;
   &:hover {
@@ -341,7 +348,7 @@ const TeamPlayerWrap = styled.div`
   margin: 10px 0px;
   padding: 15px;
   box-sizing: border-box;
-  background: rgba(0, 0, 0, 0.3);
+  background: #241d4f;
 `;
 
 const TeamNameWrap = styled.div`

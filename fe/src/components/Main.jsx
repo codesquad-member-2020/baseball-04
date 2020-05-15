@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import styled, { css, keyframes } from "styled-components";
 import GameList from "./GameList";
+import {Howl, Howler} from 'howler';
 
-const Main = ({ history }) => {
+const Main = ({ history , click}) => {
   const MainWrap = styled.div`
+  
     display: flex;
     justify-content: center;
   `;
@@ -35,16 +37,16 @@ const Main = ({ history }) => {
   `;
 
   const blink = keyframes`
-0% {
-color : white;
-}
-80%{
-color : white;
-}
-100% { 
-color :  #00ff0000;
-}
-`;
+    0% {
+    color : white;
+    }
+    80%{
+    color : white;
+    }
+    100% { 
+    color :  #00ff0000;
+    }
+    `;
   const SelectMessage = styled.div`
     font-family: "NeoDunggeunmo";
     font-size: 20px;
@@ -71,13 +73,13 @@ color :  #00ff0000;
   `;
 
   const run = keyframes`
-0% {
-margin-left : 0px;
-}
-100% { 
-margin-left : 1600px;
-}
-`;
+    0% {
+      margin-left : 0px;
+    }
+    100% { 
+    margin-left : 1600px;
+    }
+    `;
 
   const AniImg = styled.img`
     height: 140px;
@@ -90,18 +92,22 @@ margin-left : 1600px;
     }}
   `;
 
+  const sound = new Howl({src:['../sounds/bgm.mp3']});
+  const oAuthBtn = ()=> {
+  window.location.href = "https://github.com/login/oauth/authorize?client_id=d88a82aad472eca209bf&scope=user%20public_repo";}
   return (
     <>
       <MainWrap>
+      {/* {sound.play()} */}
         <ContentWrap>
           <TitleWrap>
             <BaseballImg src="https://media3.giphy.com/media/cKnZaQbUWKv7QkYnFe/giphy.gif?cid=ecf05e4798aafc218b996e1a365bd43462688d94999f2bb6&rid=giphy.gif" />
-            <Title>Baseball</Title>
+            <Title onClick={oAuthBtn}>Baseball</Title>
             <BaseballImg src="https://media3.giphy.com/media/cKnZaQbUWKv7QkYnFe/giphy.gif?cid=ecf05e4798aafc218b996e1a365bd43462688d94999f2bb6&rid=giphy.gif" />
           </TitleWrap>
           <Subtitle>o n l i n e - b a s e b a l l - g a m e</Subtitle>
           <SelectMessage active>참가할 게임을 선택해주세요.</SelectMessage>
-          <GameList history={history} />
+          <GameList history={history} click={click} />
         </ContentWrap>
       </MainWrap>
       <Animation>

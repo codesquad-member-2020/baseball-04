@@ -6,6 +6,7 @@ import Field from "./Field";
 import PlayerInfo from "./PlayerInfo";
 import BattingLog from "./BattingLog";
 import { Store, useStore } from "../../Store";
+import { createBrowserHistory } from "history";
 
 const initialState = { 
         atBats: [
@@ -53,34 +54,49 @@ const initialState = {
  
 };
 
-const reducer = (state, action) => {
-  switch (action.type) {
-    case "INIT_1":
-      return {
-        ...state,
-        atBats : action.atBats,
-      };
-    }
-};
+// const reducer = (state, action) => {
+//   switch (action.type) {
+//     case "INIT_1":
+//       return {
+//         ...state,
+//         atBats : action.atBats,
+//       };
+//     }
+// };
 
-const Game = ({ history, match }) => {
+
+const Game = ({ data, gameId}) => {
+
+  const history = createBrowserHistory();
+
 
   // const [state, dispatch] = useReducer(reducer, initialState);
   const [gameData, setGameData] = useState(initialState);
+  const [baseRunningData, setBaseRunningData] = useState('');
+  const [pitchDetailData, setPitchDetailData] = useState('');
 
   useEffect(() => {
-    const gameId = match.params.gameNum;
-    axios
-      .get(`http://52.78.203.80/api/mock/games/${gameId}`)
-      .then((response) => {
-          // dispatch({type : "INIT_1", atBats : response.data.atBats})
-          setGameData(response.data);
-      });
+    // const gameId = match.params.gameNum;
+    // axios
+    //   .get(`http://52.78.203.80/api/mock/games/${gameId}`)
+    //   .then((response) => {
+    //       // dispatch({type : "INIT_1", atBats : response.data.atBats})
+    //       setGameData(response.data);
+    //   });
+
+      if(data===''){
+        history.push(`/`);
+        return;
+      }else{
+        setGameData(data);
+
+      }
+
   }, []);
 
   const Wrap = styled.div`
     width: 100%;
-    height: 100%;
+    height: 110%;
     display: flex;
     flex-wrap: wrap;
     background: #241d4f;
@@ -104,13 +120,27 @@ const Game = ({ history, match }) => {
     console.log(test);
   };
 
+  const pitchSwingBtnClickHandler = (requestBody,pitchBat)=>{
+    // const gameId = gameId;
+    axios
+    .put(`http://52.78.203.80/api/mock/games/${gameId}/${pitchBat}`,{
+      requestBody
+    })
+    .then((response) => {
+      console.log(response.data);     
+      setGameData(response.data.gameScreenData);
+      setBaseRunningData(response.data.baserunning);
+      setPitchDetailData(response.data.pitchDetail);
+    });
+  };
+
   return (
     <Store.Provider>
       {test(gameData)}
       <Wrap>
         <TeamScore  data={gameData.scoreBoard} history={history} />
         <PlayerInfo data={gameData.currentAtBat} />
-        <Field data={gameData.halfInningStatus} />
+        <Field data={gameData.halfInningStatus} click={pitchSwingBtnClickHandler} baseRunning = {baseRunningData} pitchDetail={pitchDetailData}/>
         <BattingLog data={gameData.atBats} />
       </Wrap>
     </Store.Provider>

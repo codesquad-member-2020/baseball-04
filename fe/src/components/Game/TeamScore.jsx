@@ -1,20 +1,26 @@
 import React, { useState, useEffect, useReducer } from "react";
 import styled, { keyframes } from "styled-components";
+import Popup from "../Popup";
+
 
 const TeamScore = ({data ,history}) => {
 
-  const popupBtnHandler = () => {
-   history.push("/score_players");
-  };
+  // const popupBtnHandler = () => {
+  // //  history.push("/score_players");
+  // setPopupStyle({display : "flex"})
+  // };
 
-  const test = () => {
-    console.log(data);
-  };
 
   const [isHome, setIsHome] = useState();
+  const [homeScore , setHomeScore] = useState();
+  const [awayScore , setAwayScore] = useState();
+  const [popupStyle, setPopupStyle] = useState({display:"none"});
+
 
   useEffect(() => {
    setIsHome(data.userIsHome);
+   setHomeScore(data.homeScore);
+   setAwayScore(data.awayScore);
   }, []);
 
 
@@ -24,7 +30,18 @@ const TeamScore = ({data ,history}) => {
         return style;
     };
 
+
+  const popupBtnHandler = ()=>{
+    setPopupStyle({display:"flex"});
+  };
+  
+  const closeBtnClickHandler = () => {
+    setPopupStyle({display:"none"});
+  };
+
   return (
+    <>
+    <Popup style={popupStyle} click={closeBtnClickHandler}/>
     <Wrap>
       <Title>BASEBALL</Title>
       <Subtitle>o n l i n e - b a s e b a l l - g a m e</Subtitle>
@@ -32,15 +49,16 @@ const TeamScore = ({data ,history}) => {
       <ScoreWrap>
         <TeamImg src={data.homeImageUrl}/>
         <Content>{data.homeName}</Content>
-        <Score>{data.homeScore}</Score>
+        <Score>{homeScore}</Score>
         <Score style={{ color: "#A33756" }}>vs</Score>
         <Content>{data.awayName}</Content>
-        <Score>{data.awayScore}</Score>
+        <Score>{awayScore}</Score>
         <TeamImg src={data.awayImageUrl}/>
 
       </ScoreWrap>
       <Player style={setPlayerMark()}>▲</Player>
     </Wrap>
+    </>
   );
 };
 
@@ -82,6 +100,7 @@ const PopupBtn = styled.button`
   border-radius: 5px;
   padding: 5px;
   font-family: "NeoDunggeunmo";
+  z-index : 5;
 `;
 
 const ScoreWrap = styled.div`
