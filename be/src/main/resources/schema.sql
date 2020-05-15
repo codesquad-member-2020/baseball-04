@@ -1,13 +1,12 @@
-DROP TABLE IF EXISTS game;
-DROP TABLE IF EXISTS team;
-DROP TABLE IF EXISTS team_stat;
-DROP TABLE IF EXISTS half_inning;
-DROP TABLE IF EXISTS at_bat;
-DROP TABLE IF EXISTS pitch;
-DROP TABLE IF EXISTS player;
-DROP TABLE IF EXISTS batter_stat;
-DROP TABLE IF EXISTS pitcher;
 DROP TABLE IF EXISTS pitcher_stat;
+DROP TABLE IF EXISTS batter_stat;
+DROP TABLE IF EXISTS player;
+DROP TABLE IF EXISTS pitch;
+DROP TABLE IF EXISTS at_bat;
+DROP TABLE IF EXISTS half_inning;
+DROP TABLE IF EXISTS team_stat;
+DROP TABLE IF EXISTS team;
+DROP TABLE IF EXISTS game;
 
 CREATE TABLE game
 (
@@ -76,8 +75,8 @@ CREATE TABLE player
     id                BIGINT AUTO_INCREMENT PRIMARY KEY,
     team              BIGINT REFERENCES team (id),
     name              VARCHAR(64),
-    batting_average   DECIMAL,
-    pitching_accuracy DECIMAL -- null if not a pitcher
+    batting_average   DECIMAL(4, 3),
+    pitching_accuracy DECIMAL(4, 3) -- null if not a pitcher
 );
 
 CREATE TABLE batter_stat
