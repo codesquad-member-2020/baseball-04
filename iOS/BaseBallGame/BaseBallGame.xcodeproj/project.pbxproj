@@ -17,7 +17,6 @@
 		6A5D470D246862FE00113A51 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5D470C246862FE00113A51 /* Enum.swift */; };
 		6A5D470F24686D2200113A51 /* TeamScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5D470E24686D2200113A51 /* TeamScoreView.swift */; };
 		6A6AA812246C675F00305B7B /* ScoreStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6AA811246C675F00305B7B /* ScoreStackView.swift */; };
-		6A6AA814246C695700305B7B /* ScoreDetailTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6AA813246C695700305B7B /* ScoreDetailTableDataSource.swift */; };
 		6A770030246A9C4C003EA1CF /* CurrentAtBatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A77002F246A9C4C003EA1CF /* CurrentAtBatView.swift */; };
 		6A7B5A81246D21F000D72628 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7B5A80246D21F000D72628 /* NetworkManager.swift */; };
 		6A7B5A83246D29FD00D72628 /* UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7B5A82246D29FD00D72628 /* UseCase.swift */; };
@@ -58,7 +57,6 @@
 		6A5D470C246862FE00113A51 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		6A5D470E24686D2200113A51 /* TeamScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamScoreView.swift; sourceTree = "<group>"; };
 		6A6AA811246C675F00305B7B /* ScoreStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreStackView.swift; sourceTree = "<group>"; };
-		6A6AA813246C695700305B7B /* ScoreDetailTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreDetailTableDataSource.swift; sourceTree = "<group>"; };
 		6A77002F246A9C4C003EA1CF /* CurrentAtBatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentAtBatView.swift; sourceTree = "<group>"; };
 		6A7B5A80246D21F000D72628 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		6A7B5A82246D29FD00D72628 /* UseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCase.swift; sourceTree = "<group>"; };
@@ -173,7 +171,6 @@
 				6AD1357C246AD95F00B947A3 /* CustomButton.swift */,
 				6AD135DE246BF19400B947A3 /* HistoryCollectionViewCell.swift */,
 				6A6AA811246C675F00305B7B /* ScoreStackView.swift */,
-				6A6AA813246C695700305B7B /* ScoreDetailTableDataSource.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -310,7 +307,6 @@
 				6A5D470B24685DC100113A51 /* MatchingViewController.swift in Sources */,
 				6A6AA812246C675F00305B7B /* ScoreStackView.swift in Sources */,
 				6A45AB8A246872E000FC2B57 /* RoundRectView.swift in Sources */,
-				6A6AA814246C695700305B7B /* ScoreDetailTableDataSource.swift in Sources */,
 				6A8F5176245FFB6800285788 /* SceneDelegate.swift in Sources */,
 				6A8F51A22462AD8A00285788 /* Game.swift in Sources */,
 				6A8F519D24624CA900285788 /* ScoreDetailViewController.swift in Sources */,
