@@ -29,6 +29,6 @@ enum PlayButtonCase: String, CustomStringConvertible {
         return self.rawValue
     }
     
-    case Pitch = "Pitch", Hitting = "Hitting"
+    case Pitch = "Pitch", Hitting = "Swing"
 }
 
