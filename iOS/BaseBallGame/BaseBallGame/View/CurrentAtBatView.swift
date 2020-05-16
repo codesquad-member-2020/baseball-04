@@ -11,19 +11,50 @@ import UIKit
 @IBDesignable
 class CurrentAtBatView: UIView {
     
-    @IBInspectable var playerImage: UIImage {
+    var isBatter = true
+    @IBInspectable var playerImage: UIImage? {
         get{
             return image
         }
         set{
-            image = newValue
+            image = newValue!
         }
     }
-    private var image: UIImage = #imageLiteral(resourceName: "PitchingPerson") {
+    var image: UIImage {
         didSet {
             imageView.image = image
         }
     }
+    var configuration: InGameInfo? {
+        didSet {
+            if isBatter {
+                updateHitterView()
+            } else {
+                updatePitcherView()
+            }
+        }
+    }
+    
+    private func updateHitterView() {
+                    DispatchQueue.main.async {
+                        self.roleLabel.text = "타자"
+                        self.nameLabel.text =
+                            self.configuration?.currentAtBat.batterName
+                        guard let hitCount = self.configuration?.currentAtBat.hitCount else {return}
+                        self.infoLabel.text = "\(hitCount)"
+
+        }
+    }
+    
+    private func updatePitcherView() {
+        DispatchQueue.main.async {
+        self.roleLabel.text = "투수"
+        self.nameLabel.text =  self.configuration?.currentAtBat.pitcherName
+            guard let pitchCount = self.configuration?.currentAtBat.pitchCount else {return}
+        self.infoLabel.text = "\(pitchCount)"
+        }
+    }
+    
     var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -77,22 +108,24 @@ class CurrentAtBatView: UIView {
     }()
     
     override init(frame: CGRect) {
+        image = UIImage()
         super.init(frame: frame)
         setupView()
     }
     
     required init?(coder: NSCoder) {
+        image = UIImage()
         super.init(coder: coder)
         setupView()
     }
     
     private func setupView() {
-        imageView.image = image
         infoStackView.addArrangedSubview(spacingLabel)
         infoStackView.addArrangedSubview(roleLabel)
         infoStackView.addArrangedSubview(nameLabel)
         infoStackView.addArrangedSubview(infoLabel)
         totalStackView.addArrangedSubview(imageView)
+        imageView.image = image
         totalStackView.addArrangedSubview(infoStackView)
         self.addSubview(totalStackView)
         setupConstraint()
@@ -104,7 +137,11 @@ class CurrentAtBatView: UIView {
         totalStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         totalStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         totalStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-       imageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5).isActive = true
+        setupImageView()
+    }
+    
+    private func setupImageView() {
+        imageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5).isActive = true
         imageView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 1).isActive = true
     }
 }
