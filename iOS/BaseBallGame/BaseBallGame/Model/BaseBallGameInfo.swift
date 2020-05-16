@@ -35,10 +35,10 @@ struct GameGeneralInfo: Codable {
 
 // In Game (Get)
 struct InGameInfo: Codable {
-    let atBats: [AtBatsInfo]
+    let scoreBoard: ScoreBoard
     let currentAtBat: CurrentAtBat
     let halfInningStatus: HalfInningStatus
-    let scoreBoard: ScoreBoard
+    let atBats: [AtBatsInfo]
 }
 
 // In Game - At Bats Info
@@ -90,7 +90,6 @@ struct ScoreBoard: Codable {
     let homeScore: Int
     let userIsHome: Bool
 }
-
 // Get Bat Outcome (Put)
 // request
 struct SwingChoice: Codable {
