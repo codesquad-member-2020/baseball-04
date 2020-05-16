@@ -10,7 +10,6 @@ import UIKit
 
 class TeamScoreView: UIView {
     
-    
     var configuration: GameInfo? {
         didSet{
             setupView()
