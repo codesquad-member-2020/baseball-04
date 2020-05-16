@@ -23,3 +23,12 @@ enum CustomFont {
 enum CustomColor {
     static let BabyPink = "BabyPink"
 }
+
+enum PlayButtonCase: String, CustomStringConvertible {
+    var description: String {
+        return self.rawValue
+    }
+    
+    case Pitch = "Pitch", Hitting = "Swing"
+}
+

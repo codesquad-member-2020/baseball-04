@@ -19,11 +19,9 @@ class GameStackView: UIStackView {
         
     }
     
-    func makeGame(data: GameInfo) -> Game {
-        guard let gameCell = Bundle.main.loadNibNamed("GameStackCell", owner: self, options: nil)?.first as? Game else { return Game()}
-        let dummydata = GameInfo(gameNumber: 1, homeTeam: "homehome", awayTeam: "teamteam")
-        gameCell.configuration = dummydata
-        return gameCell
+    func makeGame(data: GamesInfo, completed: @escaping (Game?) -> ()) {
+        let gameCell = Bundle.main.loadNibNamed("GameStackCell", owner: self, options: nil)?.first as? Game
+        completed(gameCell)
     }
     
     func addGame(newGame: Game) {

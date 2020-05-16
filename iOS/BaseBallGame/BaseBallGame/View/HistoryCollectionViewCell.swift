@@ -54,7 +54,7 @@ class HistoryCollectionViewCell: UICollectionViewCell {
     let numberLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .white
+        label.textColor = .red
         label.text = "1."
         label.backgroundColor = UIColor(named: "ClassicBlue")
         label.font = UIFont(name: CustomFont.mainFont, size: 14)
@@ -66,7 +66,7 @@ class HistoryCollectionViewCell: UICollectionViewCell {
     let playResultLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .white
+        label.textColor = .blue
         label.text = "스트라이크"
         label.font = UIFont(name: CustomFont.mainFont, size: 17)
         label.textAlignment = .center
@@ -110,12 +110,13 @@ class HistoryCollectionViewCell: UICollectionViewCell {
     private func setConstraints() {
 //        totalStackView.centerXAnchor.constraint(equalToSystemSpacingAfter: self.centerXAnchor, multiplier: 1).isActive = true
         totalStackView.centerYAnchor.constraint(equalToSystemSpacingBelow: self.centerYAnchor, multiplier: 1).isActive = true
-        totalStackView.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor).isActive = true
-        totalStackView.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        totalStackView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+        totalStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
         totalStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
         totalStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
-
-        playerInfoLabel.heightAnchor.constraint(equalTo: totalStackView.heightAnchor, multiplier: 0.2).isActive = true
     }
-
+    
+    private func updateViewData() {
+        // view에 data 넣기
+    }
 }
