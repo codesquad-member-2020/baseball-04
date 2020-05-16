@@ -14,11 +14,20 @@ protocol GameDelegate {
 
 class Game: UIView {
     
+    let useCase = UseCase()
+    var gameNumber = 1
+    var homeGameId = 0
+    var awayGameId = 0
+    var homeIsAvailable = true
+    var awayIsAvailable = true
     @IBOutlet weak var gameNumberLabel: UILabel!
     @IBOutlet weak var homeTeamButton: UIButton!
     @IBOutlet weak var awayTeamButton: UIButton!
+    @IBOutlet weak var homeTeamImageView: UIImageView!
+    @IBOutlet weak var awayTeamImageView: UIImageView!
+    
     var gameStackCellDelegate: GameDelegate!
-    var configuration: GameInfo? {
+    var configuration: GamesInfo? {
         didSet{
             setupView()
         }
@@ -34,7 +43,7 @@ class Game: UIView {
         self.translatesAutoresizingMaskIntoConstraints = false
         setupButton(button: homeTeamButton)
         setupButton(button: awayTeamButton)
-        inputData()
+        inputDataIntoView()
     }
     
     private func setupButton(button: UIButton) {
@@ -43,13 +52,40 @@ class Game: UIView {
         button.titleLabel?.adjustsFontForContentSizeCategory = true
     }
     
-    private func inputData() {
-        guard let gameNumber = configuration?.gameNumber else { return }
-        gameNumberLabel.text = "Game \(gameNumber)"
-        guard let homeTeam = configuration?.homeTeam else { return }
-        homeTeamButton.setTitle(homeTeam, for: .normal)
-        guard let awayTeam = configuration?.awayTeam else { return }
-        awayTeamButton.setTitle(awayTeam, for: .normal)
+    private func inputDataIntoView() {
+        guard let configuration = self.configuration else {return}
+        setupHomeTeamView(configuration: configuration)
+        setupAwayTeamView(configuration: configuration)
+    }
+    
+    private func setupHomeTeamView(configuration: GamesInfo) {
+        let home = configuration.home
+        homeGameId = home.id
+        homeTeamButton.setTitle(home.name, for: .normal)
+        homeIsAvailable = home.isAvailable
+        useCase.getImage(imageURL: home.imageURL){
+            imageData in
+            guard let imageData = imageData else {return}
+            let teamImage = UIImage(data: imageData)
+            DispatchQueue.main.async {
+                self.homeTeamImageView.image = teamImage
+            }
+        }
+    }
+    
+    private func setupAwayTeamView(configuration: GamesInfo) {
+        let away = configuration.away
+        awayGameId = away.id
+        awayTeamButton.setTitle(away.name, for: .normal)
+        awayIsAvailable = away.isAvailable
+        useCase.getImage(imageURL: away.imageURL){
+            imageData in
+            guard let imageData = imageData else {return}
+            let teamImage = UIImage(data: imageData)
+            DispatchQueue.main.async {
+                self.awayTeamImageView.image = teamImage
+            }
+        }
     }
     
     @IBAction func homeTeamButtonTapped(_ sender: Any) {
