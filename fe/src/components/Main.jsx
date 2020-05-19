@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import styled, { css, keyframes } from "styled-components";
 import GameList from "./GameList";
-import {Howl, Howler} from 'howler';
+import { Howl, Howler } from "howler";
 
-const Main = ({ history , click}) => {
+const Main = ({ history, click }) => {
   const MainWrap = styled.div`
-  
     display: flex;
     justify-content: center;
   `;
@@ -92,13 +91,15 @@ const Main = ({ history , click}) => {
     }}
   `;
 
-  const sound = new Howl({src:['../sounds/bgm.mp3']});
-  const oAuthBtn = ()=> {
-  window.location.href = "https://github.com/login/oauth/authorize?client_id=d88a82aad472eca209bf&scope=user%20public_repo";}
+  const sound = new Howl({ src: ["../sounds/bgm.mp3"] });
+  const oAuthBtn = () => {
+    window.location.href =
+      "https://github.com/login/oauth/authorize?client_id=d88a82aad472eca209bf&scope=user%20public_repo";
+  };
   return (
     <>
       <MainWrap>
-      {/* {sound.play()} */}
+        {/* {sound.play()} */}
         <ContentWrap>
           <TitleWrap>
             <BaseballImg src="https://media3.giphy.com/media/cKnZaQbUWKv7QkYnFe/giphy.gif?cid=ecf05e4798aafc218b996e1a365bd43462688d94999f2bb6&rid=giphy.gif" />

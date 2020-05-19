@@ -3,7 +3,7 @@ import styled, { css, keyframes } from "styled-components";
 import filedImg from "../../images/diamond2.png";
 import PitchSwingBtn from "./PitchSwingBtn";
 
-const Field = ({ data, click ,baseRunning, pitchDetail}) => {
+const Field = ({ data, click, baseRunning, pitchDetail }) => {
   const Wrap = styled.div`
     width: 1000px;
     height: 600px;
@@ -68,7 +68,7 @@ const Field = ({ data, click ,baseRunning, pitchDetail}) => {
      margin-left : -25px;
      }
     `;
-    const move3 = keyframes`
+  const move3 = keyframes`
     0% {
      margin-left : 210px;
     }
@@ -178,16 +178,14 @@ const Field = ({ data, click ,baseRunning, pitchDetail}) => {
     }}
   `;
   const ResultWrap = styled.div`
-    position : absolute;
-    width : 95%;
-    height : 250px;
-    top : 350px;
-    display :flex;
-    justify-content : center;
-    align-items : center;
-    box-sizing : border-box;
-   
-
+    position: absolute;
+    width: 95%;
+    height: 250px;
+    top: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
   `;
   const ResultMsg = styled.div`
     background: rgba(0, 0, 0, 0.7);
@@ -242,7 +240,7 @@ const Field = ({ data, click ,baseRunning, pitchDetail}) => {
       opacity : 0;
     }
     `;
-    const showFireworks = keyframes`
+  const showFireworks = keyframes`
     0% {
       opacity : 0;
     }
@@ -261,8 +259,6 @@ const Field = ({ data, click ,baseRunning, pitchDetail}) => {
     }
     `;
 
-    
-
   // const [batterPosition, setBatterPosition] = useState(0);
 
   const [inning, setInning] = useState();
@@ -274,7 +270,6 @@ const Field = ({ data, click ,baseRunning, pitchDetail}) => {
   const [thirdBase, setThirdBase] = useState();
   const [homeBase, setHomeBase] = useState(false);
 
-
   useEffect(() => {
     setInning(setInningMsg(data));
     setBallCount(makeCircle(data.ballCount));
@@ -283,20 +278,20 @@ const Field = ({ data, click ,baseRunning, pitchDetail}) => {
     setFirstBase(data.runnerIsOnFirstBase);
     setSecondBase(data.runnerIsOnSecondBase);
     setThirdBase(data.runnerIsOnThirdBase);
-    
-    baseRunning==='' ? setHomeBase(false) : setHomeBase(baseRunning.runnerAdvancesToHomeBase);
+
+    baseRunning === "" ? setHomeBase(false) : setHomeBase(baseRunning.runnerAdvancesToHomeBase);
 
     console.log(baseRunning);
     console.log(pitchDetail);
   }, []);
 
   const setInningMsg = (data) => {
-    let msg = '';
+    let msg = "";
     const isTop = data.inningIsTop === true ? "초" : "말";
     const offense = data.userIsOffense === true ? "수비" : "공격";
     msg = `${data.inning}회${isTop} ${offense}`;
-    if(data.inningIsTop==null || data.userIsOffense ==null ) msg='';
-    return msg ;
+    if (data.inningIsTop == null || data.userIsOffense == null) msg = "";
+    return msg;
   };
 
   const makeCircle = (num) => {
@@ -307,22 +302,35 @@ const Field = ({ data, click ,baseRunning, pitchDetail}) => {
     return countCircle;
   };
 
-  const showMsg = ()=> {
-  if(pitchDetail==='')return;
-  if(pitchDetail.outcomeIsHit==true){
-
-    // const img = "https://media1.giphy.com/media/3rYxjPwF5i9mALN1UM/giphy.gif?cid=ecf05e4717c670d1f4c5de672ccd5c6468bac448d48d29d5&rid=giphy.gif"
-    // const img = "https://media2.giphy.com/media/eJ5oQjIgCo8rS/giphy.gif?cid=ecf05e47007419c0af6338b27f5c1534ecd51607de8452eb&rid=giphy.gif";
-    // const img = "https://media1.giphy.com/media/NxpMNq17Y2Khq/giphy.gif?cid=ecf05e47eaff096097e66a0e5fb050ad641024471c446454&rid=giphy.gif";
-    // const img = "https://media0.giphy.com/media/xT9IgMgdur6larNA1a/giphy.gif?cid=ecf05e47a97e61665c0d41d45b42ad067b71ee3b730e1fbc&rid=giphy.gif";
-    // const img = "https://media2.giphy.com/media/3ohhwzIw3bISRhQWME/giphy.gif?cid=ecf05e471fe8ed4e6a649f599210813c2a3f24021fd0a59d&rid=giphy.gif";
-    // const img="https://media3.giphy.com/media/LwDos9YUtFxZU8TfzW/giphy.gif?cid=ecf05e4781dc7b97a7601d526c014a28baa47e9b65797597&rid=giphy.gif";
-  const img = "https://media2.giphy.com/media/eKlyWo5MCbWf2oVpCp/giphy.gif?cid=ecf05e47e74832139bef590ba8af0a383758a783e7e0f262&rid=giphy.gif";
-  return <>    <FireworksWrap><Fireworks showF src={img}/></FireworksWrap>
-    <ResultWrap><ResultMsg show>{pitchDetail.message}</ResultMsg></ResultWrap> </>
-  }else{
-    return <ResultWrap><ResultMsg show>{pitchDetail.message}</ResultMsg></ResultWrap>
-  }
+  const showMsg = () => {
+    if (pitchDetail === "") return;
+    if (pitchDetail.outcomeIsHit == true) {
+      // const img = "https://media1.giphy.com/media/3rYxjPwF5i9mALN1UM/giphy.gif?cid=ecf05e4717c670d1f4c5de672ccd5c6468bac448d48d29d5&rid=giphy.gif"
+      // const img = "https://media2.giphy.com/media/eJ5oQjIgCo8rS/giphy.gif?cid=ecf05e47007419c0af6338b27f5c1534ecd51607de8452eb&rid=giphy.gif";
+      // const img = "https://media1.giphy.com/media/NxpMNq17Y2Khq/giphy.gif?cid=ecf05e47eaff096097e66a0e5fb050ad641024471c446454&rid=giphy.gif";
+      // const img = "https://media0.giphy.com/media/xT9IgMgdur6larNA1a/giphy.gif?cid=ecf05e47a97e61665c0d41d45b42ad067b71ee3b730e1fbc&rid=giphy.gif";
+      // const img = "https://media2.giphy.com/media/3ohhwzIw3bISRhQWME/giphy.gif?cid=ecf05e471fe8ed4e6a649f599210813c2a3f24021fd0a59d&rid=giphy.gif";
+      // const img="https://media3.giphy.com/media/LwDos9YUtFxZU8TfzW/giphy.gif?cid=ecf05e4781dc7b97a7601d526c014a28baa47e9b65797597&rid=giphy.gif";
+      const img =
+        "https://media2.giphy.com/media/eKlyWo5MCbWf2oVpCp/giphy.gif?cid=ecf05e47e74832139bef590ba8af0a383758a783e7e0f262&rid=giphy.gif";
+      return (
+        <>
+          {" "}
+          <FireworksWrap>
+            <Fireworks showF src={img} />
+          </FireworksWrap>
+          <ResultWrap>
+            <ResultMsg show>{pitchDetail.message}</ResultMsg>
+          </ResultWrap>{" "}
+        </>
+      );
+    } else {
+      return (
+        <ResultWrap>
+          <ResultMsg show>{pitchDetail.message}</ResultMsg>
+        </ResultWrap>
+      );
+    }
   };
 
   const setBatter = () => {
@@ -350,7 +358,7 @@ const Field = ({ data, click ,baseRunning, pitchDetail}) => {
         </>
       );
     }
-    if (homeBase==false && thirdBase === true) {
+    if (homeBase == false && thirdBase === true) {
       return (
         <>
           <Route1>
@@ -387,29 +395,27 @@ const Field = ({ data, click ,baseRunning, pitchDetail}) => {
 
   return (
     <>
-    <Wrap>
+      <Wrap>
+        <SBOWrap>
+          <SBO>
+            S <Count style={{ color: "yellow" }}>{strikeCount}</Count>
+          </SBO>
+          <SBO>
+            B<Count style={{ color: "green" }}>{ballCount}</Count>
+          </SBO>
+          <SBO>
+            O<Count style={{ color: "red" }}>{outCount}</Count>
+          </SBO>
+        </SBOWrap>
+        {setBatter()}
+        <PitchSwingBtn isOffense={data.userIsOffense} click={click} />
+        <FieldImg src={filedImg} />
 
-      <SBOWrap>
-        <SBO>
-          S <Count style={{ color: "yellow" }}>{strikeCount}</Count>
-        </SBO>
-        <SBO>
-          B<Count style={{ color: "green" }}>{ballCount}</Count>
-        </SBO>
-        <SBO>
-          O<Count style={{ color: "red" }}>{outCount}</Count>
-        </SBO>
-      </SBOWrap>
-      {setBatter()}
-      <PitchSwingBtn isOffense = {data.userIsOffense} click = {click}/>
-      <FieldImg src={filedImg} />
-      
-    {showMsg()}
-      <GameInfo>{inning}</GameInfo>
-    </Wrap>
+        {showMsg()}
+        <GameInfo>{inning}</GameInfo>
+      </Wrap>
     </>
   );
 };
 
 export default Field;
-
